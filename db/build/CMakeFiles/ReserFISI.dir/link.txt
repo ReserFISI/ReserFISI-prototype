@@ -1,1 +1,0 @@
-/usr/bin/g++ -g CMakeFiles/ReserFISI.dir/index.cpp.o CMakeFiles/ReserFISI.dir/db.cpp.o -o ReserFISI  -ljsoncpp -lpq 
