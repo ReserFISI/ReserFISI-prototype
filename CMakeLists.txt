@@ -5,7 +5,13 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 # Agregar el ejecutable
-add_executable(ReserFISI src/main.cpp src/db.cpp src/routes/students_routes.cpp src/routes/index_routes.cpp)
+add_executable(ReserFISI 
+src/main.cpp 
+src/db.cpp 
+src/routes/students_routes.cpp 
+src/routes/index_routes.cpp
+src/routes/controllers/students_controller.cpp
+)
 
 # Encontrar y configurar jsoncpp
 find_package(PkgConfig REQUIRED)

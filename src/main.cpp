@@ -1,4 +1,5 @@
-#include "./routes/students.routes.h"
+#include "./routes/students_routes.h"
+#include "./routes/controllers/students_controller.h"
 #include "./routes/index_routes.h"
 #include "db.h"
 

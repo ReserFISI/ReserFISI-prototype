@@ -1,27 +1,29 @@
-// students.routes.cpp
-#include "students.routes.h"
+#include "students_routes.h"
+#include "controllers/students_controller.h"
 
 void setupStudentRoutes(crow::SimpleApp& app) {
-    
     CROW_ROUTE(app, "/students")
-    ([]() {
-        return "obteniendo estudiantes"; 
+    .methods(crow::HTTPMethod::GET)
+    ([](const crow::request& req, crow::response& res) {
+        getStudents(res);
     });
 
     CROW_ROUTE(app, "/students")
     .methods(crow::HTTPMethod::POST)
-    ([]() {
-        return "creando estudiantes"; });
+    ([](const crow::request& req, crow::response& res) {
+        createStudent(req, res);
+    });
 
     CROW_ROUTE(app, "/students")
     .methods(crow::HTTPMethod::PUT)
-    ([]() {
-        return "actualizando estudiantes";  
+    ([](const crow::request& req, crow::response& res) {
+        updateStudent(req, res);
     });
 
     CROW_ROUTE(app, "/students")
     .methods(crow::HTTPMethod::DELETE)
-    ([]() {
-        return "eliminando estudiantes"; 
+    ([](const crow::request& req, crow::response& res) {
+        deleteStudent(req, res);
     });
 }
+
