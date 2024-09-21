@@ -11,6 +11,7 @@ src/db.cpp
 src/routes/students_routes.cpp 
 src/routes/index_routes.cpp
 src/routes/controllers/students_controller.cpp
+src/routes/controllers/index_controller.cpp
 )
 
 # Encontrar y configurar jsoncpp

@@ -6,4 +6,4 @@
 
 void setupIndexRoutes(crow::SimpleApp& app, DatabaseConnection& dbConn);
 
-#endif 
+#endif
