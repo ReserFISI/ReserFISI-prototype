@@ -1,0 +1,53 @@
+#include <iostream>
+#include <fstream>
+#include <json/json.h>
+#include "crow.h"
+#include "hola.h"
+
+using namespace crow;
+
+int main() {
+
+    SimpleApp App;
+
+    std::cout<<x<<std::endl;
+    
+    // Abrir el archivo data.json
+    std::ifstream file("data.json");
+
+    // Verificar si el archivo se abrió correctamente
+    if (!file.is_open()) {
+        std::cerr << "No se pudo abrir el archivo JSON." << std::endl;
+        return 1;
+    }
+
+    // Parsear el archivo JSON
+    Json::Value jsonData;
+    Json::CharReaderBuilder readerBuilder;
+    std::string errs;
+
+    if (!Json::parseFromStream(readerBuilder, file, &jsonData, &errs)) {
+        std::cerr << "Error al parsear el JSON: " << errs << std::endl;
+        return 1;
+    }
+
+    // Ruta que devuelve el contenido del JSON
+    CROW_ROUTE(App, "/json")([&jsonData]{
+        crow::json::wvalue jsonResponse;
+
+        // Copiar el contenido del JSON leído a jsonResponse
+        for (auto it = jsonData.begin(); it != jsonData.end(); ++it) {
+            jsonResponse[it.key().asString()] = it->asString();
+        }
+
+        return jsonResponse;
+    });
+
+    // Imprimir el contenido del JSON en consola
+    std::cout << "Contenido del JSON: " << jsonData.toStyledString() << std::endl;
+
+    // Configurar y ejecutar la aplicación en el puerto 18080
+    App.port(18080).multithreaded().run();
+
+    return 0;
+}

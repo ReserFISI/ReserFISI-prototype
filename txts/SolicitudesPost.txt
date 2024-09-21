@@ -1,0 +1,51 @@
+#include "crow.h"
+#include <json/json.h>
+#include <unordered_map>
+#include <string>
+
+int main() {
+    crow::SimpleApp app;
+
+    // Simulación de base de datos en memoria con IDs de empleados
+    std::unordered_map<int, std::string> empleados = {
+        {1, "Juan Pérez"},
+        {2, "Ana García"},
+        {3, "Carlos Sánchez"}
+    };
+
+    // Ruta POST para eliminar empleados
+    CROW_ROUTE(app, "/eliminar_empleado").methods(crow::HTTPMethod::Post)([&empleados](const crow::request& req) {
+        crow::json::rvalue json_data = crow::json::load(req.body);
+        
+        if (!json_data) {
+            return crow::response(400, "JSON mal formado");
+        }
+
+        if (!json_data.has("id")) {
+            return crow::response(400, "Falta el campo 'id'");
+        }
+
+        int empleado_id = json_data["id"].i();
+
+        if (empleados.find(empleado_id) != empleados.end()) {
+            empleados.erase(empleado_id);
+            return crow::response(200, "Empleado eliminado exitosamente");
+        } else {
+            return crow::response(404, "Empleado no encontrado");
+        }
+    });
+
+    // Ruta GET para ver todos los empleados
+    CROW_ROUTE(app, "/empleados")([&empleados]() {
+        crow::json::wvalue empleados_json;
+
+        for (const auto& [id, nombre] : empleados) {
+            empleados_json[std::to_string(id)] = nombre;
+        }
+
+        return crow::response(empleados_json);
+    });
+
+    // Ejecutar el servidor en el puerto 18080
+    app.port(18080).multithreaded().run();
+}

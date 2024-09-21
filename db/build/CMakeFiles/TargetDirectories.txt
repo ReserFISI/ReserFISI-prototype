@@ -1,0 +1,3 @@
+/home/sebastianrojas/Escritorio/ReserFISI/build/CMakeFiles/ReserFISI.dir
+/home/sebastianrojas/Escritorio/ReserFISI/build/CMakeFiles/edit_cache.dir
+/home/sebastianrojas/Escritorio/ReserFISI/build/CMakeFiles/rebuild_cache.dir

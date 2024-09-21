@@ -1,0 +1,14 @@
+[
+{
+  "directory": "/home/sebastianrojas/Escritorio/ReserFISI/build",
+  "command": "/usr/bin/g++  -I/home/sebastianrojas/Escritorio/ReserFISI/include -g -std=gnu++17 -o CMakeFiles/ReserFISI.dir/index.cpp.o -c /home/sebastianrojas/Escritorio/ReserFISI/index.cpp",
+  "file": "/home/sebastianrojas/Escritorio/ReserFISI/index.cpp",
+  "output": "CMakeFiles/ReserFISI.dir/index.cpp.o"
+},
+{
+  "directory": "/home/sebastianrojas/Escritorio/ReserFISI/build",
+  "command": "/usr/bin/g++  -I/home/sebastianrojas/Escritorio/ReserFISI/include -g -std=gnu++17 -o CMakeFiles/ReserFISI.dir/db.cpp.o -c /home/sebastianrojas/Escritorio/ReserFISI/db.cpp",
+  "file": "/home/sebastianrojas/Escritorio/ReserFISI/db.cpp",
+  "output": "CMakeFiles/ReserFISI.dir/db.cpp.o"
+}
+]
