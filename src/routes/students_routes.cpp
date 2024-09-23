@@ -1,6 +1,5 @@
 #include "students_routes.h"
 #include "controllers/students_controller.h"
-#include "../json_middleware.h"
 
 void setupStudentRoutes(crow::App<JSONMiddleware>& app) {
     CROW_ROUTE(app, "/students")

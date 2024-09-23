@@ -1,5 +1,6 @@
 #include "students_controller.h"
 #include <sstream>
+#include <iostream>
 
 void getStudents(crow::response& res) {
     res.write("Obteniendo estudiantes");
@@ -7,6 +8,18 @@ void getStudents(crow::response& res) {
 }
 
 void createStudent(const crow::request& req, crow::response& res) {
+    auto body = crow::json::load(req.body);
+    
+    if (!body) {
+        res.code = 400;
+        res.write("Invalid JSON");
+        res.end();
+        return;
+    }
+
+    std::cout << "Received JSON body: " << body << std::endl;
+
+    res.code = 200;
     res.write("Creando estudiante");
     res.end();
 }
