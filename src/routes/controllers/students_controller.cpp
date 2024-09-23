@@ -1,7 +1,8 @@
 #include "students_controller.h"
 #include <sstream>
-#include <iostream>
 #include "../../db.h"
+#include "../../db_operations.h"
+
 
 DatabaseConnection db("dbname=reserfisi user=sebastianrojas password=1234");
 
@@ -20,40 +21,21 @@ void createStudent(const crow::request& req, crow::response& res) {
         return;
     }
 
-    int id = body["ID_Estudiante"].i(); 
-    std::string nombre = body["Nombre"].s(); 
-    std::string correo = body["Correo_Electronico"].s(); 
+    int id = body["ID_Estudiante"].i();
+    std::string nombre = body["Nombre"].s();
+    std::string correo = body["Correo_Electronico"].s();
     std::string telefono = body["Telefono"].s();
 
     try {
         PGconn* conn = db.getConnection(); 
+        DatabaseOperations dbOps(conn);
+        dbOps.insertStudent(id, nombre, correo, telefono);
 
-        if (!conn) {
-            res.code = 500;
-            res.write("Failed to connect to the database.");
-            res.end();
-            return;
-        }
-
-        std::stringstream query;
-        query << "INSERT INTO Alumnos (ID_Estudiante, Nombre, Correo_Electronico, Telefono) "
-              << "VALUES (" << id << ", '" << nombre << "', '" << correo << "', '"
-              << telefono << "');";
-        
-        PGresult* result = PQexec(conn, query.str().c_str());
-        
-        if (PQresultStatus(result) != PGRES_COMMAND_OK) {
-            res.code = 500;
-            res.write("Database error: " + std::string(PQerrorMessage(conn)));
-        } else {
-            res.code = 200;
-            res.write("Post success");
-        }
-        
-        PQclear(result);
+        res.code = 200;
+        res.write("Post success");
     } catch (const std::runtime_error& e) {
         res.code = 500;
-        res.write("Database connection error: " + std::string(e.what()));
+        res.write("Error: " + std::string(e.what()));
     }
 
     res.end();
