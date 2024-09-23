@@ -55,3 +55,32 @@ std::string DatabaseOperations::getAllStudents() {
 
     return json_response.str();
 }
+
+
+std::string DatabaseOperations::getStudentById(int id) {
+    std::stringstream query;
+    query << "SELECT * FROM Alumnos WHERE ID_Estudiante = " << id << ";";
+    PGresult* result = PQexec(conn, query.str().c_str());
+
+    if (PQresultStatus(result) != PGRES_TUPLES_OK) {
+        PQclear(result);
+        throw std::runtime_error("Database error: " + std::string(PQerrorMessage(conn)));
+    }
+
+    std::stringstream json_response;
+    json_response << "[";
+
+    int rows = PQntuples(result);
+    if (rows > 0) {
+        json_response << "{"
+                      << "\"ID_Estudiante\": " << PQgetvalue(result, 0, 0) << ","
+                      << "\"Nombre\": \"" << PQgetvalue(result, 0, 1) << "\","
+                      << "\"Correo_Electronico\": \"" << PQgetvalue(result, 0, 2) << "\","
+                      << "\"Telefono\": \"" << PQgetvalue(result, 0, 3) << "\""
+                      << "}";
+    }
+    json_response << "]";
+
+    PQclear(result);
+    return json_response.str();
+}

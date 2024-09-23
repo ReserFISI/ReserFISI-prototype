@@ -25,5 +25,13 @@ void setupStudentRoutes(crow::App<JSONMiddleware>& app) {
     ([](const crow::request& req, crow::response& res) {
         deleteStudent(req, res);
     });
+
+    CROW_ROUTE(app, "/students/<int>")
+    .methods(crow::HTTPMethod::GET)
+    ([](const crow::request& req, crow::response& res, int id) {
+    getStudentById(id, res);
+    });
+
+
 }
 

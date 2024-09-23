@@ -66,3 +66,22 @@ void deleteStudent(const crow::request& req, crow::response& res) {
     res.write("Eliminando estudiante");
     res.end();
 }
+
+void getStudentById(int id, crow::response& res) {
+    try {
+        DatabaseOperations dbOps(db.getConnection());
+        std::string student = dbOps.getStudentById(id);
+
+        if (student.empty()) {
+            res.code = 404;
+            res.write("Student not found");
+        } else {
+            res.code = 200;
+            res.write(student);
+        }
+    } catch (const std::runtime_error& e) {
+        res.code = 500;
+        res.write("Database error: " + std::string(e.what()));
+    }
+    res.end();
+}
