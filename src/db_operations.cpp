@@ -9,14 +9,14 @@ void DatabaseOperations::insertStudent(int id, const std::string& nombre, const 
         throw std::runtime_error("Database connection is not established.");
     }
 
-    std::stringstream query;
-    query << "INSERT INTO Alumnos (ID_Estudiante, Nombre, Correo_Electronico, Telefono) "
-          << "VALUES (" << id << ", '" << nombre << "', '" << correo << "', '"
-          << telefono << "');";
-    
-    PGresult* result = PQexec(conn, query.str().c_str());
+    const char* paramValues[4] = { std::to_string(id).c_str(), nombre.c_str(), correo.c_str(), telefono.c_str() };
+    PGresult* result = PQexecParams(conn, 
+        "INSERT INTO Alumnos (ID_Estudiante, Nombre, Correo_Electronico, Telefono) VALUES ($1, $2, $3, $4);",
+        4, 
+        nullptr, paramValues, nullptr, nullptr, 0);
 
     if (PQresultStatus(result) != PGRES_COMMAND_OK) {
+        PQclear(result);
         throw std::runtime_error("Database error: " + std::string(PQerrorMessage(conn)));
     }
 
@@ -58,9 +58,14 @@ std::string DatabaseOperations::getAllStudents() {
 
 
 std::string DatabaseOperations::getStudentById(int id) {
-    std::stringstream query;
-    query << "SELECT * FROM Alumnos WHERE ID_Estudiante = " << id << ";";
-    PGresult* result = PQexec(conn, query.str().c_str());
+    if (!conn) {
+        throw std::runtime_error("Database connection is not established.");
+    }
+
+    const char* paramValues[1] = { std::to_string(id).c_str() };
+    PGresult* result = PQexecParams(conn, 
+        "SELECT * FROM Alumnos WHERE ID_Estudiante = $1;", 
+        1, nullptr, paramValues, nullptr, nullptr, 0);
 
     if (PQresultStatus(result) != PGRES_TUPLES_OK) {
         PQclear(result);
@@ -68,18 +73,16 @@ std::string DatabaseOperations::getStudentById(int id) {
     }
 
     std::stringstream json_response;
-    json_response << "[";
-
-    int rows = PQntuples(result);
-    if (rows > 0) {
+    if (PQntuples(result) > 0) {
         json_response << "{"
                       << "\"ID_Estudiante\": " << PQgetvalue(result, 0, 0) << ","
                       << "\"Nombre\": \"" << PQgetvalue(result, 0, 1) << "\","
                       << "\"Correo_Electronico\": \"" << PQgetvalue(result, 0, 2) << "\","
                       << "\"Telefono\": \"" << PQgetvalue(result, 0, 3) << "\""
                       << "}";
+    } else {
+        json_response << "{}";
     }
-    json_response << "]";
 
     PQclear(result);
     return json_response.str();
@@ -163,3 +166,23 @@ void DatabaseOperations::insertRequest(int id, const std::string& fechaSolicitud
 
     PQclear(result);
 }
+
+
+bool DatabaseOperations::removeRequestById(int id) {
+    std::string query = "DELETE FROM Reserva WHERE ID_Reserva = " + std::to_string(id) + ";";
+
+    PGresult* result = PQexec(conn, query.c_str());
+
+    if (PQresultStatus(result) != PGRES_COMMAND_OK) {
+        PQclear(result);
+        throw std::runtime_error("Database error: " + std::string(PQerrorMessage(conn)));
+    }
+
+    int affectedRows = std::stoi(PQcmdTuples(result));
+    PQclear(result);
+
+    return affectedRows > 0;
+}
+
+
+

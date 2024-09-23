@@ -6,7 +6,7 @@
 void getRequest(crow::response& res);
 void createRequest(const crow::request& req, crow::response& res);
 void updateRequest(const crow::request& req, crow::response& res);
-void deleteRequest(const crow::request& req, crow::response& res);
+void deleteRequestById(const crow::request& req, crow::response& res, int id);
 void getRequestById(int id, crow::response& res);
 
 #endif

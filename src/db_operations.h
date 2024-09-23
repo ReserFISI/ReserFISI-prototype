@@ -16,6 +16,7 @@ public:
     void insertRequest(int id, const std::string& fechaSolicitud, const std::string& fechaReserva, const std::string& estadoReserva);
     std::string getAllRequests();
     std::string getRequestById(int id);
+    bool removeRequestById(int id);
 
 private:
     PGconn* conn;

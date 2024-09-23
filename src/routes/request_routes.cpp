@@ -20,10 +20,10 @@ void setupRequestRoutes(crow::App<JSONMiddleware>& app) {
         updateRequest(req, res);
     });
 
-    CROW_ROUTE(app, "/request")
+    CROW_ROUTE(app, "/request/<int>")
     .methods(crow::HTTPMethod::DELETE)
-    ([](const crow::request& req, crow::response& res) {
-        deleteRequest(req, res);
+    ([](const crow::request& req, crow::response& res, int id) {
+        deleteRequestById(req, res, id);
     });
 
     CROW_ROUTE(app, "/request/<int>")
