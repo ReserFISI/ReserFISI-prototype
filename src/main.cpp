@@ -2,10 +2,10 @@
 #include "./routes/controllers/students_controller.h"
 #include "./routes/index_routes.h"
 #include "db.h"
-
+#include "json_middleware.h"
 
 int main() {
-    crow::SimpleApp app;
+    crow::App<JSONMiddleware> app; 
 
     DatabaseConnection dbConn("dbname=hola user=sebastianrojas password=1234");
 

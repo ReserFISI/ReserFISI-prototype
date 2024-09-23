@@ -3,7 +3,8 @@
 
 #include "crow.h"
 #include "../db.h"
+#include "../json_middleware.h"
 
-void setupIndexRoutes(crow::SimpleApp& app, DatabaseConnection& dbConn);
+void setupIndexRoutes(crow::App<JSONMiddleware>& app, DatabaseConnection& dbConn);
 
 #endif

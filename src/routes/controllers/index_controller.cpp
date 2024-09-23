@@ -1,7 +1,6 @@
 #include "index_controller.h"
 #include <libpq-fe.h>
 #include <string>
-#include <iostream>
 
 void handlePapuRoute(const crow::request& req, crow::response& res, DatabaseConnection& dbConn) {
     PGconn* conn = dbConn.getConnection();
