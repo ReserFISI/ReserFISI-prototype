@@ -3,9 +3,6 @@
 #include "../../db.h"
 #include "../../db_operations.h"
 
-
-DatabaseConnection db("dbname=reserfisi user=sebastianrojas password=1234");
-
 void getStudents(crow::response& res) {
     try {
         PGconn* conn = db.getConnection();

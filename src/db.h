@@ -1,19 +1,23 @@
-#ifndef DATABASE_CONNECTION_H
-#define DATABASE_CONNECTION_H
+#ifndef DB_H
+#define DB_H
 
 #include <libpq-fe.h>
+#include <stdexcept>
 #include <string>
 
 class DatabaseConnection {
 public:
-    DatabaseConnection(const std::string& conninfo);
-
+    DatabaseConnection(const std::string& connectionString);
     ~DatabaseConnection();
 
     PGconn* getConnection() const;
 
 private:
-    PGconn* conn; 
+    PGconn* conn;
+    void connect(const std::string& connectionString);
+    void disconnect();
 };
 
-#endif 
+extern DatabaseConnection db;
+
+#endif

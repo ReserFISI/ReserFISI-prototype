@@ -13,6 +13,10 @@ public:
     std::string getAllStudents();
     std::string getStudentById(int id);
 
+    void insertRequest(int id, const std::string& fechaSolicitud, const std::string& fechaReserva, const std::string& estadoReserva);
+    std::string getAllRequests();
+    std::string getRequestById(int id);
+
 private:
     PGconn* conn;
 };
