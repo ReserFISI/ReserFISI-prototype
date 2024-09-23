@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 # Agregar el ejecutable
 add_executable(ReserFISI 
-src/main.cpp 
+main.cpp 
 src/db.cpp 
 src/routes/students_routes.cpp
 src/routes/request_routes.cpp 
