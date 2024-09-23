@@ -7,7 +7,23 @@
 DatabaseConnection db("dbname=reserfisi user=sebastianrojas password=1234");
 
 void getStudents(crow::response& res) {
-    res.write("Obteniendo estudiantes");
+    try {
+        PGconn* conn = db.getConnection();
+        if (!conn) {
+            throw std::runtime_error("Failed to connect to the database.");
+        }
+
+        DatabaseOperations dbOps(conn);
+        std::string studentsJson = dbOps.getAllStudents();
+
+        res.code = 200;
+        res.set_header("Content-Type", "application/json");
+        res.write(studentsJson);
+    } catch (const std::runtime_error& e) {
+        res.code = 500;
+        res.write("Error: " + std::string(e.what()));
+    }
+
     res.end();
 }
 

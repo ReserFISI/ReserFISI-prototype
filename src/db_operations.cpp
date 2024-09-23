@@ -1,6 +1,6 @@
 #include "db_operations.h"
 #include <sstream>
-#include <iostream>
+#include <string>
 
 DatabaseOperations::DatabaseOperations(PGconn* connection) : conn(connection) {}
 
@@ -21,4 +21,37 @@ void DatabaseOperations::insertStudent(int id, const std::string& nombre, const 
     }
 
     PQclear(result);
+}
+
+
+std::string DatabaseOperations::getAllStudents() {
+    if (!conn) {
+        throw std::runtime_error("Database connection is not established.");
+    }
+
+    std::string query = "SELECT * FROM Alumnos;";
+    PGresult* result = PQexec(conn, query.c_str());
+
+    if (PQresultStatus(result) != PGRES_TUPLES_OK) {
+        throw std::runtime_error("Database error: " + std::string(PQerrorMessage(conn)));
+    }
+
+    std::stringstream json_response;
+    json_response << "[";
+
+    int rows = PQntuples(result);
+    for (int i = 0; i < rows; ++i) {
+        if (i > 0) json_response << ",";
+        json_response << "{"
+                      << "\"ID_Estudiante\": " << PQgetvalue(result, i, 0) << ","
+                      << "\"Nombre\": \"" << PQgetvalue(result, i, 1) << "\","
+                      << "\"Correo_Electronico\": \"" << PQgetvalue(result, i, 2) << "\","
+                      << "\"Telefono\": \"" << PQgetvalue(result, i, 3) << "\""
+                      << "}";
+    }
+    json_response << "]";
+
+    PQclear(result);
+
+    return json_response.str();
 }
