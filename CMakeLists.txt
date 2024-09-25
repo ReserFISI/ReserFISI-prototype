@@ -19,6 +19,10 @@ src/db_operations.cpp
 
 # Encontrar y configurar jsoncpp
 find_package(PkgConfig REQUIRED)
+
+#dotenv 
+#find_package(laserpants_dotenv)
+
 pkg_check_modules(JSONCPP jsoncpp)
 
 # Incluir jsoncpp en tu proyecto
@@ -35,6 +39,8 @@ target_include_directories(ReserFISI PRIVATE ${LIBPQ_INCLUDE_DIRS})
 
 # Enlazar libpq a tu proyecto
 target_link_libraries(ReserFISI PRIVATE ${LIBPQ_LIBRARIES})
+# target_link_libraries(ReserFISI laserpants::dotenv)
+
 
 # Incluir directorio de headers de Crow
 target_include_directories(ReserFISI PRIVATE include)

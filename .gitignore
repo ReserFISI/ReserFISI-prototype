@@ -1,4 +1,4 @@
 txts/
-build/
 txts
 .vscode/
+.env
