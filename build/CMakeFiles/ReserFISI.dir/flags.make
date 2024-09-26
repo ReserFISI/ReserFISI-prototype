@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/sebastianrojas/Escritorio/ReserFISI-prototype/include
+CXX_INCLUDES = -I/home/sebastianrojas/Escritorio/ReserFISI-prototype/include -isystem /usr/local/include/laserpants/dotenv-0.9.3
 
 CXX_FLAGS = -std=gnu++17
 

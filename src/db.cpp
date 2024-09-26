@@ -1,7 +1,8 @@
 #include "db.h"
 #include <iostream>
+#include <dotenv.h>
 
-DatabaseConnection db("dbname=reserfisi user=sebastianrojas password=1234");
+DatabaseConnection* db = nullptr; 
 
 DatabaseConnection::DatabaseConnection(const std::string& conninfo) {
     conn = PQconnectdb(conninfo.c_str());
@@ -14,14 +15,21 @@ DatabaseConnection::DatabaseConnection(const std::string& conninfo) {
     }
 }
 
-// Destructor de DatabaseConnection
 DatabaseConnection::~DatabaseConnection() {
     if (conn) {
         PQfinish(conn);
     }
 }
 
-// Obtener la conexión
 PGconn* DatabaseConnection::getConnection() const {
     return conn;
+}
+
+void initDatabaseConnection() {
+    std::string dbName = std::getenv("DB_NAME");
+    std::string dbUser = std::getenv("DB_USER");
+    std::string dbPassword = std::getenv("DB_PASSWORD");
+    std::string conninfo = "dbname=" + dbName + " user=" + dbUser + " password=" + dbPassword;
+    std::cout << "Connection info: " << conninfo << std::endl; //Para test
+    db = new DatabaseConnection(conninfo); //La fijaza era hacerlo un objeto
 }

@@ -4,14 +4,19 @@
 
 #include "src/db.h"
 #include "src/json_middleware.h"
+#include "dotenv.h"
 
 int main() {
-    crow::App<JSONMiddleware> app; 
+    
+    dotenv::init("../.env");
+    initDatabaseConnection();
 
+    crow::App<JSONMiddleware> app; 
+    
     setupRequestRoutes(app);
     setupStudentRoutes(app);
 
-    setupIndexRoutes(app, db);
+    setupIndexRoutes(app, *db);
 
     app.port(18080).multithreaded().run();
 

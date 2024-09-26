@@ -4,7 +4,7 @@
 
 void getStudents(crow::response& res) {
     try {
-        PGconn* conn = db.getConnection();
+        PGconn* conn = db->getConnection();
         if (!conn) {
             throw std::runtime_error("Failed to connect to the database.");
         }
@@ -39,7 +39,7 @@ void createStudent(const crow::request& req, crow::response& res) {
     std::string telefono = body["Telefono"].s();
 
     try {
-        PGconn* conn = db.getConnection(); 
+        PGconn* conn = db->getConnection(); 
         DatabaseOperations dbOps(conn);
         dbOps.insertStudent(id, nombre, correo, telefono);
 
@@ -65,7 +65,7 @@ void deleteStudent(const crow::request& req, crow::response& res) {
 
 void getStudentById(int id, crow::response& res) {
     try {
-        DatabaseOperations dbOps(db.getConnection());
+        DatabaseOperations dbOps(db->getConnection());
         std::string student = dbOps.getStudentById(id);
 
         if (student.empty()) {

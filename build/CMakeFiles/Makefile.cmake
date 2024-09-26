@@ -13,6 +13,8 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/3.28.2/CMakeSystem.cmake"
   "/home/sebastianrojas/Escritorio/ReserFISI-prototype/db/data.json"
   "/home/sebastianrojas/Escritorio/ReserFISI-prototype/hola.json"
+  "/usr/local/lib/cmake/laserpants_dotenv/dotenv.cmake"
+  "/usr/local/lib/cmake/laserpants_dotenv/laserpants_dotenv-config.cmake"
   "/usr/share/cmake/Modules/CMakeCInformation.cmake"
   "/usr/share/cmake/Modules/CMakeCXXInformation.cmake"
   "/usr/share/cmake/Modules/CMakeCommonLanguageInclude.cmake"

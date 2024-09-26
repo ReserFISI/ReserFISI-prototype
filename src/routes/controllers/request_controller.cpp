@@ -4,7 +4,7 @@
 
 void getRequest(crow::response& res) {
     try {
-        DatabaseOperations dbOps(db.getConnection());
+        DatabaseOperations dbOps(db->getConnection());
         std::string requests = dbOps.getAllRequests();
 
         res.code = 200;
@@ -35,7 +35,7 @@ void createRequest(const crow::request& req, crow::response& res) {
     std::string estadoReserva = body["Estado_Reserva"].s();
 
     try {
-        DatabaseOperations dbOps(db.getConnection());
+        DatabaseOperations dbOps(db->getConnection());
         dbOps.insertRequest(id, fechaSolicitud, fechaReserva, estadoReserva);
 
         res.code = 200;
@@ -57,7 +57,7 @@ void updateRequest(const crow::request& req, crow::response& res) {
 
 void deleteRequestById(const crow::request& req, crow::response& res, int id) {
     try {
-        DatabaseOperations dbOps(db.getConnection());
+        DatabaseOperations dbOps(db->getConnection());
         bool deleted = dbOps.removeRequestById(id); 
         if (deleted) {
             res.code = 200;
@@ -81,7 +81,7 @@ void deleteRequestById(const crow::request& req, crow::response& res, int id) {
 
 void getRequestById(int id, crow::response& res) {
     try {
-        DatabaseOperations dbOps(db.getConnection());
+        DatabaseOperations dbOps(db->getConnection());
         std::string request = dbOps.getRequestById(id);
 
         if (request.empty()) {

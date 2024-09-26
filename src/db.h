@@ -18,6 +18,8 @@ private:
     void disconnect();
 };
 
-extern DatabaseConnection db;
+extern DatabaseConnection* db;
+
+void initDatabaseConnection(); 
 
 #endif

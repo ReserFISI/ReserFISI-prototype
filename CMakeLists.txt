@@ -4,47 +4,37 @@ project(ReserFISI)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-# Agregar el ejecutable
+# Ejecutables
 add_executable(ReserFISI 
-main.cpp 
-src/db.cpp 
-src/routes/students_routes.cpp
-src/routes/request_routes.cpp 
-src/routes/index_routes.cpp
-src/routes/controllers/students_controller.cpp
-src/routes/controllers/request_controller.cpp
-src/routes/controllers/index_controller.cpp
-src/db_operations.cpp
+    main.cpp 
+    src/db.cpp 
+    src/routes/students_routes.cpp
+    src/routes/request_routes.cpp 
+    src/routes/index_routes.cpp
+    src/routes/controllers/students_controller.cpp
+    src/routes/controllers/request_controller.cpp
+    src/routes/controllers/index_controller.cpp
+    src/db_operations.cpp
 )
 
-# Encontrar y configurar jsoncpp
+#jsoncpp
 find_package(PkgConfig REQUIRED)
-
-#dotenv 
-#find_package(laserpants_dotenv)
-
 pkg_check_modules(JSONCPP jsoncpp)
 
-# Incluir jsoncpp en tu proyecto
-target_include_directories(ReserFISI PRIVATE ${JSONCPP_INCLUDE_DIRS})
-
-# Enlazar jsoncpp a tu proyecto
-target_link_libraries(ReserFISI PRIVATE ${JSONCPP_LIBRARIES})
+#dotenv 
+find_package(laserpants_dotenv REQUIRED)
 
 # Encontrar y configurar libpq
 pkg_check_modules(LIBPQ libpq)
+include_directories(${LIBPQ_INCLUDE_DIRS})
 
-# Agregar directorios de inclusión para libpq
-target_include_directories(ReserFISI PRIVATE ${LIBPQ_INCLUDE_DIRS})
+# Enlaces
+target_link_libraries(ReserFISI PRIVATE ${LIBPQ_LIBRARIES} laserpants::dotenv ${JSONCPP_LIBRARIES})
 
-# Enlazar libpq a tu proyecto
-target_link_libraries(ReserFISI PRIVATE ${LIBPQ_LIBRARIES})
-# target_link_libraries(ReserFISI laserpants::dotenv)
-
-
-# Incluir directorio de headers de Crow
+# Crow
 target_include_directories(ReserFISI PRIVATE include)
+target_include_directories(ReserFISI PRIVATE ${JSONCPP_INCLUDE_DIRS})
 
-# Copiar archivos de configuración
+# Para los jsons
 configure_file(${CMAKE_SOURCE_DIR}/db/data.json ${CMAKE_BINARY_DIR}/db/data.json COPYONLY)
 configure_file(${CMAKE_SOURCE_DIR}/hola.json ${CMAKE_BINARY_DIR}/hola.json COPYONLY)
