@@ -20,5 +20,7 @@ int main() {
 
     app.port(18080).multithreaded().run();
 
+    cleanupDatabaseConnection();
+
     return 0;
 }

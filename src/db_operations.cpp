@@ -88,6 +88,14 @@ std::string DatabaseOperations::getStudentById(int id) {
     return json_response.str();
 }
 
+/*
+
+    ==========================================================
+                            Requests                
+    ==========================================================
+
+*/
+
 
 std::string DatabaseOperations::getAllRequests() {
     if (!conn) {
@@ -184,5 +192,19 @@ bool DatabaseOperations::removeRequestById(int id) {
     return affectedRows > 0;
 }
 
+void DatabaseOperations::updateRequestById(int id, const std::string& fechaSolicitud, const std::string& fechaReserva, const std::string& estadoReserva) {
+    std::stringstream query;
+    query << "UPDATE Reserva SET Fecha_Solicitud = '" << fechaSolicitud
+          << "', Fecha_Reserva = '" << fechaReserva
+          << "', Estado_Reserva = '" << estadoReserva
+          << "' WHERE ID_Reserva = " << id << ";";
 
+    PGresult* result = PQexec(conn, query.str().c_str());
 
+    if (PQresultStatus(result) != PGRES_COMMAND_OK) {
+        PQclear(result);
+        throw std::runtime_error("Database error: " + std::string(PQerrorMessage(conn)));
+    }
+
+    PQclear(result);
+}

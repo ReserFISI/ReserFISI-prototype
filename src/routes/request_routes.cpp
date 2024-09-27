@@ -14,10 +14,10 @@ void setupRequestRoutes(crow::App<JSONMiddleware>& app) {
         createRequest(req, res);
     });
 
-    CROW_ROUTE(app, "/request")
+    CROW_ROUTE(app, "/request/<int>")
     .methods(crow::HTTPMethod::PUT)
-    ([](const crow::request& req, crow::response& res) {
-        updateRequest(req, res);
+    ([](const crow::request& req, crow::response& res, int id) {
+        updateRequest(req, res, id);
     });
 
     CROW_ROUTE(app, "/request/<int>")

@@ -11,8 +11,6 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/3.28.2/CMakeCCompiler.cmake"
   "CMakeFiles/3.28.2/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.28.2/CMakeSystem.cmake"
-  "/home/sebastianrojas/Escritorio/ReserFISI-prototype/db/data.json"
-  "/home/sebastianrojas/Escritorio/ReserFISI-prototype/hola.json"
   "/usr/local/lib/cmake/laserpants_dotenv/dotenv.cmake"
   "/usr/local/lib/cmake/laserpants_dotenv/laserpants_dotenv-config.cmake"
   "/usr/share/cmake/Modules/CMakeCInformation.cmake"
@@ -46,8 +44,6 @@ set(CMAKE_MAKEFILE_OUTPUTS
 
 # Byproducts of CMake generate step:
 set(CMAKE_MAKEFILE_PRODUCTS
-  "db/data.json"
-  "hola.json"
   "CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 

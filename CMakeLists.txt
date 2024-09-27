@@ -35,6 +35,6 @@ target_link_libraries(ReserFISI PRIVATE ${LIBPQ_LIBRARIES} laserpants::dotenv ${
 target_include_directories(ReserFISI PRIVATE include)
 target_include_directories(ReserFISI PRIVATE ${JSONCPP_INCLUDE_DIRS})
 
-# Para los jsons
-configure_file(${CMAKE_SOURCE_DIR}/db/data.json ${CMAKE_BINARY_DIR}/db/data.json COPYONLY)
-configure_file(${CMAKE_SOURCE_DIR}/hola.json ${CMAKE_BINARY_DIR}/hola.json COPYONLY)
+# Para los jsons (Se borrará si es que no se necesita xd)
+#configure_file(${CMAKE_SOURCE_DIR}/db/data.json ${CMAKE_BINARY_DIR}/db/data.json COPYONLY)
+#configure_file(${CMAKE_SOURCE_DIR}/hola.json ${CMAKE_BINARY_DIR}/hola.json COPYONLY)

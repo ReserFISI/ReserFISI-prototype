@@ -11,15 +11,17 @@ public:
     ~DatabaseConnection();
 
     PGconn* getConnection() const;
+    
+    void connect(const std::string& connectionString);
+    void disconnect();
 
 private:
     PGconn* conn;
-    void connect(const std::string& connectionString);
-    void disconnect();
 };
 
 extern DatabaseConnection* db;
 
 void initDatabaseConnection(); 
+void cleanupDatabaseConnection();
 
 #endif

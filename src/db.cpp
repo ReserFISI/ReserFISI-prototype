@@ -4,26 +4,44 @@
 
 DatabaseConnection* db = nullptr; 
 
-DatabaseConnection::DatabaseConnection(const std::string& conninfo) {
-    conn = PQconnectdb(conninfo.c_str());
-    if (PQstatus(conn) != CONNECTION_OK) {
-        std::cerr << "Connection to database failed: " << PQerrorMessage(conn) << std::endl;
-        PQfinish(conn);
-        conn = nullptr; 
-    } else {
-        std::cout << "Connected to the database!" << std::endl;
-    }
+DatabaseConnection::DatabaseConnection(const std::string& connectionString) : conn(nullptr) {
+    connect(connectionString);
 }
 
 DatabaseConnection::~DatabaseConnection() {
-    if (conn) {
-        PQfinish(conn);
-    }
+    disconnect();
 }
 
 PGconn* DatabaseConnection::getConnection() const {
     return conn;
 }
+
+void DatabaseConnection::connect(const std::string& connectionString) {
+    if (conn) {
+        std::cerr << "Already connected to the database!" << std::endl;
+        return;
+    }
+    
+    conn = PQconnectdb(connectionString.c_str());
+
+    if (PQstatus(conn) != CONNECTION_OK) {
+        std::cerr << "Connection to database failed: " << PQerrorMessage(conn) << std::endl;
+        PQfinish(conn);
+        conn = nullptr;
+        throw std::runtime_error("Failed to connect to database");
+    }
+
+    std::cout << "Connected to the database successfully!" << std::endl;
+}
+
+void DatabaseConnection::disconnect() {
+    if (conn) {
+        PQfinish(conn);
+        conn = nullptr;
+        std::cout << "Disconnected from the database successfully!" << std::endl;
+    }
+}
+
 
 void initDatabaseConnection() {
     std::string dbName = std::getenv("DB_NAME");
@@ -32,4 +50,9 @@ void initDatabaseConnection() {
     std::string conninfo = "dbname=" + dbName + " user=" + dbUser + " password=" + dbPassword;
     std::cout << "Connection info: " << conninfo << std::endl; //Para test
     db = new DatabaseConnection(conninfo); //La fijaza era hacerlo un objeto
+}
+
+void cleanupDatabaseConnection() {
+    delete db;
+    db = nullptr;
 }
