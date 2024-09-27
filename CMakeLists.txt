@@ -8,13 +8,14 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 add_executable(ReserFISI 
     main.cpp 
     src/db.cpp 
+    src/db_operations.cpp
+    src/db_utilities.cpp
     src/routes/students_routes.cpp
     src/routes/request_routes.cpp 
     src/routes/index_routes.cpp
     src/routes/controllers/students_controller.cpp
     src/routes/controllers/request_controller.cpp
     src/routes/controllers/index_controller.cpp
-    src/db_operations.cpp
 )
 
 #jsoncpp

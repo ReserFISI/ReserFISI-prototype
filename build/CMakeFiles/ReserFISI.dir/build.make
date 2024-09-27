@@ -97,10 +97,38 @@ CMakeFiles/ReserFISI.dir/src/db.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/ReserFISI.dir/src/db.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sebastianrojas/Escritorio/ReserFISI-prototype/src/db.cpp -o CMakeFiles/ReserFISI.dir/src/db.cpp.s
 
+CMakeFiles/ReserFISI.dir/src/db_operations.cpp.o: CMakeFiles/ReserFISI.dir/flags.make
+CMakeFiles/ReserFISI.dir/src/db_operations.cpp.o: /home/sebastianrojas/Escritorio/ReserFISI-prototype/src/db_operations.cpp
+CMakeFiles/ReserFISI.dir/src/db_operations.cpp.o: CMakeFiles/ReserFISI.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/sebastianrojas/Escritorio/ReserFISI-prototype/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/ReserFISI.dir/src/db_operations.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ReserFISI.dir/src/db_operations.cpp.o -MF CMakeFiles/ReserFISI.dir/src/db_operations.cpp.o.d -o CMakeFiles/ReserFISI.dir/src/db_operations.cpp.o -c /home/sebastianrojas/Escritorio/ReserFISI-prototype/src/db_operations.cpp
+
+CMakeFiles/ReserFISI.dir/src/db_operations.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/ReserFISI.dir/src/db_operations.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/sebastianrojas/Escritorio/ReserFISI-prototype/src/db_operations.cpp > CMakeFiles/ReserFISI.dir/src/db_operations.cpp.i
+
+CMakeFiles/ReserFISI.dir/src/db_operations.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/ReserFISI.dir/src/db_operations.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sebastianrojas/Escritorio/ReserFISI-prototype/src/db_operations.cpp -o CMakeFiles/ReserFISI.dir/src/db_operations.cpp.s
+
+CMakeFiles/ReserFISI.dir/src/db_utilities.cpp.o: CMakeFiles/ReserFISI.dir/flags.make
+CMakeFiles/ReserFISI.dir/src/db_utilities.cpp.o: /home/sebastianrojas/Escritorio/ReserFISI-prototype/src/db_utilities.cpp
+CMakeFiles/ReserFISI.dir/src/db_utilities.cpp.o: CMakeFiles/ReserFISI.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/sebastianrojas/Escritorio/ReserFISI-prototype/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/ReserFISI.dir/src/db_utilities.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ReserFISI.dir/src/db_utilities.cpp.o -MF CMakeFiles/ReserFISI.dir/src/db_utilities.cpp.o.d -o CMakeFiles/ReserFISI.dir/src/db_utilities.cpp.o -c /home/sebastianrojas/Escritorio/ReserFISI-prototype/src/db_utilities.cpp
+
+CMakeFiles/ReserFISI.dir/src/db_utilities.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/ReserFISI.dir/src/db_utilities.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/sebastianrojas/Escritorio/ReserFISI-prototype/src/db_utilities.cpp > CMakeFiles/ReserFISI.dir/src/db_utilities.cpp.i
+
+CMakeFiles/ReserFISI.dir/src/db_utilities.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/ReserFISI.dir/src/db_utilities.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sebastianrojas/Escritorio/ReserFISI-prototype/src/db_utilities.cpp -o CMakeFiles/ReserFISI.dir/src/db_utilities.cpp.s
+
 CMakeFiles/ReserFISI.dir/src/routes/students_routes.cpp.o: CMakeFiles/ReserFISI.dir/flags.make
 CMakeFiles/ReserFISI.dir/src/routes/students_routes.cpp.o: /home/sebastianrojas/Escritorio/ReserFISI-prototype/src/routes/students_routes.cpp
 CMakeFiles/ReserFISI.dir/src/routes/students_routes.cpp.o: CMakeFiles/ReserFISI.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/sebastianrojas/Escritorio/ReserFISI-prototype/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/ReserFISI.dir/src/routes/students_routes.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/sebastianrojas/Escritorio/ReserFISI-prototype/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/ReserFISI.dir/src/routes/students_routes.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ReserFISI.dir/src/routes/students_routes.cpp.o -MF CMakeFiles/ReserFISI.dir/src/routes/students_routes.cpp.o.d -o CMakeFiles/ReserFISI.dir/src/routes/students_routes.cpp.o -c /home/sebastianrojas/Escritorio/ReserFISI-prototype/src/routes/students_routes.cpp
 
 CMakeFiles/ReserFISI.dir/src/routes/students_routes.cpp.i: cmake_force
@@ -114,7 +142,7 @@ CMakeFiles/ReserFISI.dir/src/routes/students_routes.cpp.s: cmake_force
 CMakeFiles/ReserFISI.dir/src/routes/request_routes.cpp.o: CMakeFiles/ReserFISI.dir/flags.make
 CMakeFiles/ReserFISI.dir/src/routes/request_routes.cpp.o: /home/sebastianrojas/Escritorio/ReserFISI-prototype/src/routes/request_routes.cpp
 CMakeFiles/ReserFISI.dir/src/routes/request_routes.cpp.o: CMakeFiles/ReserFISI.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/sebastianrojas/Escritorio/ReserFISI-prototype/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/ReserFISI.dir/src/routes/request_routes.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/sebastianrojas/Escritorio/ReserFISI-prototype/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/ReserFISI.dir/src/routes/request_routes.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ReserFISI.dir/src/routes/request_routes.cpp.o -MF CMakeFiles/ReserFISI.dir/src/routes/request_routes.cpp.o.d -o CMakeFiles/ReserFISI.dir/src/routes/request_routes.cpp.o -c /home/sebastianrojas/Escritorio/ReserFISI-prototype/src/routes/request_routes.cpp
 
 CMakeFiles/ReserFISI.dir/src/routes/request_routes.cpp.i: cmake_force
@@ -128,7 +156,7 @@ CMakeFiles/ReserFISI.dir/src/routes/request_routes.cpp.s: cmake_force
 CMakeFiles/ReserFISI.dir/src/routes/index_routes.cpp.o: CMakeFiles/ReserFISI.dir/flags.make
 CMakeFiles/ReserFISI.dir/src/routes/index_routes.cpp.o: /home/sebastianrojas/Escritorio/ReserFISI-prototype/src/routes/index_routes.cpp
 CMakeFiles/ReserFISI.dir/src/routes/index_routes.cpp.o: CMakeFiles/ReserFISI.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/sebastianrojas/Escritorio/ReserFISI-prototype/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/ReserFISI.dir/src/routes/index_routes.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/sebastianrojas/Escritorio/ReserFISI-prototype/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/ReserFISI.dir/src/routes/index_routes.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ReserFISI.dir/src/routes/index_routes.cpp.o -MF CMakeFiles/ReserFISI.dir/src/routes/index_routes.cpp.o.d -o CMakeFiles/ReserFISI.dir/src/routes/index_routes.cpp.o -c /home/sebastianrojas/Escritorio/ReserFISI-prototype/src/routes/index_routes.cpp
 
 CMakeFiles/ReserFISI.dir/src/routes/index_routes.cpp.i: cmake_force
@@ -142,7 +170,7 @@ CMakeFiles/ReserFISI.dir/src/routes/index_routes.cpp.s: cmake_force
 CMakeFiles/ReserFISI.dir/src/routes/controllers/students_controller.cpp.o: CMakeFiles/ReserFISI.dir/flags.make
 CMakeFiles/ReserFISI.dir/src/routes/controllers/students_controller.cpp.o: /home/sebastianrojas/Escritorio/ReserFISI-prototype/src/routes/controllers/students_controller.cpp
 CMakeFiles/ReserFISI.dir/src/routes/controllers/students_controller.cpp.o: CMakeFiles/ReserFISI.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/sebastianrojas/Escritorio/ReserFISI-prototype/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/ReserFISI.dir/src/routes/controllers/students_controller.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/sebastianrojas/Escritorio/ReserFISI-prototype/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/ReserFISI.dir/src/routes/controllers/students_controller.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ReserFISI.dir/src/routes/controllers/students_controller.cpp.o -MF CMakeFiles/ReserFISI.dir/src/routes/controllers/students_controller.cpp.o.d -o CMakeFiles/ReserFISI.dir/src/routes/controllers/students_controller.cpp.o -c /home/sebastianrojas/Escritorio/ReserFISI-prototype/src/routes/controllers/students_controller.cpp
 
 CMakeFiles/ReserFISI.dir/src/routes/controllers/students_controller.cpp.i: cmake_force
@@ -156,7 +184,7 @@ CMakeFiles/ReserFISI.dir/src/routes/controllers/students_controller.cpp.s: cmake
 CMakeFiles/ReserFISI.dir/src/routes/controllers/request_controller.cpp.o: CMakeFiles/ReserFISI.dir/flags.make
 CMakeFiles/ReserFISI.dir/src/routes/controllers/request_controller.cpp.o: /home/sebastianrojas/Escritorio/ReserFISI-prototype/src/routes/controllers/request_controller.cpp
 CMakeFiles/ReserFISI.dir/src/routes/controllers/request_controller.cpp.o: CMakeFiles/ReserFISI.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/sebastianrojas/Escritorio/ReserFISI-prototype/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/ReserFISI.dir/src/routes/controllers/request_controller.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/sebastianrojas/Escritorio/ReserFISI-prototype/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/ReserFISI.dir/src/routes/controllers/request_controller.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ReserFISI.dir/src/routes/controllers/request_controller.cpp.o -MF CMakeFiles/ReserFISI.dir/src/routes/controllers/request_controller.cpp.o.d -o CMakeFiles/ReserFISI.dir/src/routes/controllers/request_controller.cpp.o -c /home/sebastianrojas/Escritorio/ReserFISI-prototype/src/routes/controllers/request_controller.cpp
 
 CMakeFiles/ReserFISI.dir/src/routes/controllers/request_controller.cpp.i: cmake_force
@@ -170,7 +198,7 @@ CMakeFiles/ReserFISI.dir/src/routes/controllers/request_controller.cpp.s: cmake_
 CMakeFiles/ReserFISI.dir/src/routes/controllers/index_controller.cpp.o: CMakeFiles/ReserFISI.dir/flags.make
 CMakeFiles/ReserFISI.dir/src/routes/controllers/index_controller.cpp.o: /home/sebastianrojas/Escritorio/ReserFISI-prototype/src/routes/controllers/index_controller.cpp
 CMakeFiles/ReserFISI.dir/src/routes/controllers/index_controller.cpp.o: CMakeFiles/ReserFISI.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/sebastianrojas/Escritorio/ReserFISI-prototype/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/ReserFISI.dir/src/routes/controllers/index_controller.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/sebastianrojas/Escritorio/ReserFISI-prototype/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/ReserFISI.dir/src/routes/controllers/index_controller.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ReserFISI.dir/src/routes/controllers/index_controller.cpp.o -MF CMakeFiles/ReserFISI.dir/src/routes/controllers/index_controller.cpp.o.d -o CMakeFiles/ReserFISI.dir/src/routes/controllers/index_controller.cpp.o -c /home/sebastianrojas/Escritorio/ReserFISI-prototype/src/routes/controllers/index_controller.cpp
 
 CMakeFiles/ReserFISI.dir/src/routes/controllers/index_controller.cpp.i: cmake_force
@@ -181,47 +209,35 @@ CMakeFiles/ReserFISI.dir/src/routes/controllers/index_controller.cpp.s: cmake_fo
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/ReserFISI.dir/src/routes/controllers/index_controller.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sebastianrojas/Escritorio/ReserFISI-prototype/src/routes/controllers/index_controller.cpp -o CMakeFiles/ReserFISI.dir/src/routes/controllers/index_controller.cpp.s
 
-CMakeFiles/ReserFISI.dir/src/db_operations.cpp.o: CMakeFiles/ReserFISI.dir/flags.make
-CMakeFiles/ReserFISI.dir/src/db_operations.cpp.o: /home/sebastianrojas/Escritorio/ReserFISI-prototype/src/db_operations.cpp
-CMakeFiles/ReserFISI.dir/src/db_operations.cpp.o: CMakeFiles/ReserFISI.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/sebastianrojas/Escritorio/ReserFISI-prototype/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/ReserFISI.dir/src/db_operations.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ReserFISI.dir/src/db_operations.cpp.o -MF CMakeFiles/ReserFISI.dir/src/db_operations.cpp.o.d -o CMakeFiles/ReserFISI.dir/src/db_operations.cpp.o -c /home/sebastianrojas/Escritorio/ReserFISI-prototype/src/db_operations.cpp
-
-CMakeFiles/ReserFISI.dir/src/db_operations.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/ReserFISI.dir/src/db_operations.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/sebastianrojas/Escritorio/ReserFISI-prototype/src/db_operations.cpp > CMakeFiles/ReserFISI.dir/src/db_operations.cpp.i
-
-CMakeFiles/ReserFISI.dir/src/db_operations.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/ReserFISI.dir/src/db_operations.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sebastianrojas/Escritorio/ReserFISI-prototype/src/db_operations.cpp -o CMakeFiles/ReserFISI.dir/src/db_operations.cpp.s
-
 # Object files for target ReserFISI
 ReserFISI_OBJECTS = \
 "CMakeFiles/ReserFISI.dir/main.cpp.o" \
 "CMakeFiles/ReserFISI.dir/src/db.cpp.o" \
+"CMakeFiles/ReserFISI.dir/src/db_operations.cpp.o" \
+"CMakeFiles/ReserFISI.dir/src/db_utilities.cpp.o" \
 "CMakeFiles/ReserFISI.dir/src/routes/students_routes.cpp.o" \
 "CMakeFiles/ReserFISI.dir/src/routes/request_routes.cpp.o" \
 "CMakeFiles/ReserFISI.dir/src/routes/index_routes.cpp.o" \
 "CMakeFiles/ReserFISI.dir/src/routes/controllers/students_controller.cpp.o" \
 "CMakeFiles/ReserFISI.dir/src/routes/controllers/request_controller.cpp.o" \
-"CMakeFiles/ReserFISI.dir/src/routes/controllers/index_controller.cpp.o" \
-"CMakeFiles/ReserFISI.dir/src/db_operations.cpp.o"
+"CMakeFiles/ReserFISI.dir/src/routes/controllers/index_controller.cpp.o"
 
 # External object files for target ReserFISI
 ReserFISI_EXTERNAL_OBJECTS =
 
 ReserFISI: CMakeFiles/ReserFISI.dir/main.cpp.o
 ReserFISI: CMakeFiles/ReserFISI.dir/src/db.cpp.o
+ReserFISI: CMakeFiles/ReserFISI.dir/src/db_operations.cpp.o
+ReserFISI: CMakeFiles/ReserFISI.dir/src/db_utilities.cpp.o
 ReserFISI: CMakeFiles/ReserFISI.dir/src/routes/students_routes.cpp.o
 ReserFISI: CMakeFiles/ReserFISI.dir/src/routes/request_routes.cpp.o
 ReserFISI: CMakeFiles/ReserFISI.dir/src/routes/index_routes.cpp.o
 ReserFISI: CMakeFiles/ReserFISI.dir/src/routes/controllers/students_controller.cpp.o
 ReserFISI: CMakeFiles/ReserFISI.dir/src/routes/controllers/request_controller.cpp.o
 ReserFISI: CMakeFiles/ReserFISI.dir/src/routes/controllers/index_controller.cpp.o
-ReserFISI: CMakeFiles/ReserFISI.dir/src/db_operations.cpp.o
 ReserFISI: CMakeFiles/ReserFISI.dir/build.make
 ReserFISI: CMakeFiles/ReserFISI.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/sebastianrojas/Escritorio/ReserFISI-prototype/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable ReserFISI"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/sebastianrojas/Escritorio/ReserFISI-prototype/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX executable ReserFISI"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ReserFISI.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

@@ -11,6 +11,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/sebastianrojas/Escritorio/ReserFISI-prototype/main.cpp" "CMakeFiles/ReserFISI.dir/main.cpp.o" "gcc" "CMakeFiles/ReserFISI.dir/main.cpp.o.d"
   "/home/sebastianrojas/Escritorio/ReserFISI-prototype/src/db.cpp" "CMakeFiles/ReserFISI.dir/src/db.cpp.o" "gcc" "CMakeFiles/ReserFISI.dir/src/db.cpp.o.d"
   "/home/sebastianrojas/Escritorio/ReserFISI-prototype/src/db_operations.cpp" "CMakeFiles/ReserFISI.dir/src/db_operations.cpp.o" "gcc" "CMakeFiles/ReserFISI.dir/src/db_operations.cpp.o.d"
+  "/home/sebastianrojas/Escritorio/ReserFISI-prototype/src/db_utilities.cpp" "CMakeFiles/ReserFISI.dir/src/db_utilities.cpp.o" "gcc" "CMakeFiles/ReserFISI.dir/src/db_utilities.cpp.o.d"
   "/home/sebastianrojas/Escritorio/ReserFISI-prototype/src/routes/controllers/index_controller.cpp" "CMakeFiles/ReserFISI.dir/src/routes/controllers/index_controller.cpp.o" "gcc" "CMakeFiles/ReserFISI.dir/src/routes/controllers/index_controller.cpp.o.d"
   "/home/sebastianrojas/Escritorio/ReserFISI-prototype/src/routes/controllers/request_controller.cpp" "CMakeFiles/ReserFISI.dir/src/routes/controllers/request_controller.cpp.o" "gcc" "CMakeFiles/ReserFISI.dir/src/routes/controllers/request_controller.cpp.o.d"
   "/home/sebastianrojas/Escritorio/ReserFISI-prototype/src/routes/controllers/students_controller.cpp" "CMakeFiles/ReserFISI.dir/src/routes/controllers/students_controller.cpp.o" "gcc" "CMakeFiles/ReserFISI.dir/src/routes/controllers/students_controller.cpp.o.d"

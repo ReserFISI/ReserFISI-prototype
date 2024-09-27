@@ -5,33 +5,30 @@
 void getStudents(crow::response& res) {
     try {
         PGconn* conn = db->getConnection();
-        if (!conn) {
-            throw std::runtime_error("Failed to connect to the database.");
-        }
+        if(!conn){
+            throw std::runtime_error("Failed to connect to the database.");}
 
         DatabaseOperations dbOps(conn);
         std::string studentsJson = dbOps.getAllStudents();
 
         res.code = 200;
         res.set_header("Content-Type", "application/json");
-        res.write(studentsJson);
-    } catch (const std::runtime_error& e) {
+        res.write(studentsJson);} 
+    catch (const std::runtime_error& e){
         res.code = 500;
-        res.write("Error: " + std::string(e.what()));
-    }
+        res.write("Error: " + std::string(e.what()));}
 
     res.end();
 }
 
-void createStudent(const crow::request& req, crow::response& res) {
+void createStudent(const crow::request& req, crow::response& res){
     auto body = crow::json::load(req.body);
     
-    if (!body) {
+    if (!body){
         res.code = 400;
         res.write("Invalid JSON");
         res.end();
-        return;
-    }
+        return;}
 
     int id = body["ID_Estudiante"].i();
     std::string nombre = body["Nombre"].s();
@@ -44,11 +41,11 @@ void createStudent(const crow::request& req, crow::response& res) {
         dbOps.insertStudent(id, nombre, correo, telefono);
 
         res.code = 200;
-        res.write("Post success");
-    } catch (const std::runtime_error& e) {
+        res.write("Post success");}
+
+    catch (const std::runtime_error& e) {
         res.code = 500;
-        res.write("Error: " + std::string(e.what()));
-    }
+        res.write("Error: " + std::string(e.what()));}
 
     res.end();
 }

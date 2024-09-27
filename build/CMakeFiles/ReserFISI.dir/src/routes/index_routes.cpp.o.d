@@ -1,7 +1,7 @@
 CMakeFiles/ReserFISI.dir/src/routes/index_routes.cpp.o: \
  /home/sebastianrojas/Escritorio/ReserFISI-prototype/src/routes/index_routes.cpp \
  /usr/include/stdc-predef.h \
- /home/sebastianrojas/Escritorio/ReserFISI-prototype/src/routes/index_routes.h \
+ /home/sebastianrojas/Escritorio/ReserFISI-prototype/src/routes/controllers/index_controller.h \
  /usr/local/include/crow.h /usr/local/include/crow/query_string.h \
  /usr/include/stdio.h /usr/include/bits/libc-header-start.h \
  /usr/include/features.h /usr/include/features-time64.h \
@@ -748,9 +748,18 @@ CMakeFiles/ReserFISI.dir/src/routes/index_routes.cpp.o: \
  /usr/local/include/crow/http_server.h /usr/local/include/crow/version.h \
  /usr/local/include/crow/app.h /usr/include/c++/14/thread \
  /usr/include/c++/14/bits/this_thread_sleep.h \
- /home/sebastianrojas/Escritorio/ReserFISI-prototype/src/routes/../db.h \
+ /home/sebastianrojas/Escritorio/ReserFISI-prototype/src/routes/controllers/../../db.h \
  /usr/include/libpq-fe.h /usr/include/postgres_ext.h \
  /usr/include/pg_config_ext.h \
  /home/sebastianrojas/Escritorio/ReserFISI-prototype/src/routes/../json_middleware.h \
- /home/sebastianrojas/Escritorio/ReserFISI-prototype/src/routes/controllers/index_controller.h \
- /home/sebastianrojas/Escritorio/ReserFISI-prototype/src/routes/controllers/../../db.h
+ /usr/include/json/json.h /usr/include/json/config.h \
+ /usr/include/json/allocator.h /usr/include/json/version.h \
+ /usr/include/json/json_features.h /usr/include/json/forwards.h \
+ /usr/include/json/reader.h /usr/include/json/value.h \
+ /usr/include/c++/14/deque /usr/include/c++/14/bits/stl_deque.h \
+ /usr/include/c++/14/bits/deque.tcc /usr/include/c++/14/stack \
+ /usr/include/c++/14/bits/stl_stack.h /usr/include/json/writer.h \
+ /home/sebastianrojas/Escritorio/ReserFISI-prototype/src/routes/index_routes.h \
+ /home/sebastianrojas/Escritorio/ReserFISI-prototype/src/routes/../db.h \
+ /home/sebastianrojas/Escritorio/ReserFISI-prototype/src/routes/../db_utilities.h \
+ /home/sebastianrojas/Escritorio/ReserFISI-prototype/src/routes/../db.h

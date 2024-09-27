@@ -201,6 +201,30 @@ src/db_operations.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ReserFISI.dir/build.make CMakeFiles/ReserFISI.dir/src/db_operations.cpp.s
 .PHONY : src/db_operations.cpp.s
 
+src/db_utilities.o: src/db_utilities.cpp.o
+.PHONY : src/db_utilities.o
+
+# target to build an object file
+src/db_utilities.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ReserFISI.dir/build.make CMakeFiles/ReserFISI.dir/src/db_utilities.cpp.o
+.PHONY : src/db_utilities.cpp.o
+
+src/db_utilities.i: src/db_utilities.cpp.i
+.PHONY : src/db_utilities.i
+
+# target to preprocess a source file
+src/db_utilities.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ReserFISI.dir/build.make CMakeFiles/ReserFISI.dir/src/db_utilities.cpp.i
+.PHONY : src/db_utilities.cpp.i
+
+src/db_utilities.s: src/db_utilities.cpp.s
+.PHONY : src/db_utilities.s
+
+# target to generate assembly for a file
+src/db_utilities.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ReserFISI.dir/build.make CMakeFiles/ReserFISI.dir/src/db_utilities.cpp.s
+.PHONY : src/db_utilities.cpp.s
+
 src/routes/controllers/index_controller.o: src/routes/controllers/index_controller.cpp.o
 .PHONY : src/routes/controllers/index_controller.o
 
@@ -363,6 +387,9 @@ help:
 	@echo "... src/db_operations.o"
 	@echo "... src/db_operations.i"
 	@echo "... src/db_operations.s"
+	@echo "... src/db_utilities.o"
+	@echo "... src/db_utilities.i"
+	@echo "... src/db_utilities.s"
 	@echo "... src/routes/controllers/index_controller.o"
 	@echo "... src/routes/controllers/index_controller.i"
 	@echo "... src/routes/controllers/index_controller.s"

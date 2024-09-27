@@ -5,9 +5,8 @@
 DatabaseOperations::DatabaseOperations(PGconn* connection) : conn(connection) {}
 
 void DatabaseOperations::insertStudent(int id, const std::string& nombre, const std::string& correo, const std::string& telefono) {
-    if (!conn) {
-        throw std::runtime_error("Database connection is not established.");
-    }
+    if(!conn){
+        throw std::runtime_error("Database connection is not established.");}
 
     const char* paramValues[4] = { std::to_string(id).c_str(), nombre.c_str(), correo.c_str(), telefono.c_str() };
     PGresult* result = PQexecParams(conn, 
@@ -15,26 +14,21 @@ void DatabaseOperations::insertStudent(int id, const std::string& nombre, const 
         4, 
         nullptr, paramValues, nullptr, nullptr, 0);
 
-    if (PQresultStatus(result) != PGRES_COMMAND_OK) {
+    if(PQresultStatus(result) != PGRES_COMMAND_OK){
         PQclear(result);
-        throw std::runtime_error("Database error: " + std::string(PQerrorMessage(conn)));
-    }
-
+        throw std::runtime_error("Database error: " + std::string(PQerrorMessage(conn)));}
     PQclear(result);
 }
 
-
-std::string DatabaseOperations::getAllStudents() {
+std::string DatabaseOperations::getAllStudents(){
     if (!conn) {
-        throw std::runtime_error("Database connection is not established.");
-    }
+        throw std::runtime_error("Database connection is not established.");}
 
     std::string query = "SELECT * FROM Alumnos;";
     PGresult* result = PQexec(conn, query.c_str());
 
-    if (PQresultStatus(result) != PGRES_TUPLES_OK) {
-        throw std::runtime_error("Database error: " + std::string(PQerrorMessage(conn)));
-    }
+    if(PQresultStatus(result) != PGRES_TUPLES_OK){
+        throw std::runtime_error("Database error: " + std::string(PQerrorMessage(conn)));}
 
     std::stringstream json_response;
     json_response << "[";
@@ -47,8 +41,7 @@ std::string DatabaseOperations::getAllStudents() {
                       << "\"Nombre\": \"" << PQgetvalue(result, i, 1) << "\","
                       << "\"Correo_Electronico\": \"" << PQgetvalue(result, i, 2) << "\","
                       << "\"Telefono\": \"" << PQgetvalue(result, i, 3) << "\""
-                      << "}";
-    }
+                      << "}";}
     json_response << "]";
 
     PQclear(result);
@@ -57,10 +50,9 @@ std::string DatabaseOperations::getAllStudents() {
 }
 
 
-std::string DatabaseOperations::getStudentById(int id) {
+std::string DatabaseOperations::getStudentById(int id){
     if (!conn) {
-        throw std::runtime_error("Database connection is not established.");
-    }
+        throw std::runtime_error("Database connection is not established.");}
 
     const char* paramValues[1] = { std::to_string(id).c_str() };
     PGresult* result = PQexecParams(conn, 
@@ -79,10 +71,9 @@ std::string DatabaseOperations::getStudentById(int id) {
                       << "\"Nombre\": \"" << PQgetvalue(result, 0, 1) << "\","
                       << "\"Correo_Electronico\": \"" << PQgetvalue(result, 0, 2) << "\","
                       << "\"Telefono\": \"" << PQgetvalue(result, 0, 3) << "\""
-                      << "}";
-    } else {
-        json_response << "{}";
-    }
+                      << "}";} 
+    else{
+        json_response << "{}";}
 
     PQclear(result);
     return json_response.str();
@@ -129,18 +120,16 @@ std::string DatabaseOperations::getAllRequests() {
 }
 
 std::string DatabaseOperations::getRequestById(int id) {
-    if (!conn) {
-        throw std::runtime_error("Database connection is not established.");
-    }
+    if(!conn){
+        throw std::runtime_error("Database connection is not established.");}
 
     std::stringstream query;
     query << "SELECT * FROM Reserva WHERE ID_Reserva = " << id << ";";
 
     PGresult* result = PQexec(conn, query.str().c_str());
-    if (PQresultStatus(result) != PGRES_TUPLES_OK) {
+    if(PQresultStatus(result) != PGRES_TUPLES_OK){
         PQclear(result);
-        throw std::runtime_error("Database error: " + std::string(PQerrorMessage(conn)));
-    }
+        throw std::runtime_error("Database error: " + std::string(PQerrorMessage(conn)));}
 
     std::stringstream json_response;
     json_response << "[";
@@ -152,13 +141,11 @@ std::string DatabaseOperations::getRequestById(int id) {
                       << "\"Fecha_Solicitud\": \"" << PQgetvalue(result, 0, 1) << "\","
                       << "\"Fecha_Reserva\": \"" << PQgetvalue(result, 0, 2) << "\","
                       << "\"Estado_Reserva\": \"" << PQgetvalue(result, 0, 3) << "\""
-                      << "}";
-    }
+                      << "}";}
     json_response << "]";
 
     PQclear(result);
-    return json_response.str();
-}
+    return json_response.str();}
 
 void DatabaseOperations::insertRequest(int id, const std::string& fechaSolicitud, const std::string& fechaReserva, const std::string& estadoReserva) {
     std::stringstream query;
@@ -169,14 +156,13 @@ void DatabaseOperations::insertRequest(int id, const std::string& fechaSolicitud
     PGresult* result = PQexec(conn, query.str().c_str());
 
     if (PQresultStatus(result) != PGRES_COMMAND_OK) {
-        throw std::runtime_error(PQerrorMessage(conn));
-    }
+        throw std::runtime_error(PQerrorMessage(conn));}
 
     PQclear(result);
 }
 
 
-bool DatabaseOperations::removeRequestById(int id) {
+bool DatabaseOperations::removeRequestById(int id){
     std::string query = "DELETE FROM Reserva WHERE ID_Reserva = " + std::to_string(id) + ";";
 
     PGresult* result = PQexec(conn, query.c_str());
@@ -201,10 +187,9 @@ void DatabaseOperations::updateRequestById(int id, const std::string& fechaSolic
 
     PGresult* result = PQexec(conn, query.str().c_str());
 
-    if (PQresultStatus(result) != PGRES_COMMAND_OK) {
+    if(PQresultStatus(result) != PGRES_COMMAND_OK){
         PQclear(result);
-        throw std::runtime_error("Database error: " + std::string(PQerrorMessage(conn)));
-    }
+        throw std::runtime_error("Database error: " + std::string(PQerrorMessage(conn)));}
 
     PQclear(result);
 }

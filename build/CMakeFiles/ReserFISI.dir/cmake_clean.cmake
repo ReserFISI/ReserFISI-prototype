@@ -5,6 +5,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/ReserFISI.dir/src/db.cpp.o.d"
   "CMakeFiles/ReserFISI.dir/src/db_operations.cpp.o"
   "CMakeFiles/ReserFISI.dir/src/db_operations.cpp.o.d"
+  "CMakeFiles/ReserFISI.dir/src/db_utilities.cpp.o"
+  "CMakeFiles/ReserFISI.dir/src/db_utilities.cpp.o.d"
   "CMakeFiles/ReserFISI.dir/src/routes/controllers/index_controller.cpp.o"
   "CMakeFiles/ReserFISI.dir/src/routes/controllers/index_controller.cpp.o.d"
   "CMakeFiles/ReserFISI.dir/src/routes/controllers/request_controller.cpp.o"

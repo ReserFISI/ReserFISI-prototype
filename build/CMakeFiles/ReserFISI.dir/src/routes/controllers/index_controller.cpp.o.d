@@ -750,4 +750,11 @@ CMakeFiles/ReserFISI.dir/src/routes/controllers/index_controller.cpp.o: \
  /usr/include/c++/14/bits/this_thread_sleep.h \
  /home/sebastianrojas/Escritorio/ReserFISI-prototype/src/routes/controllers/../../db.h \
  /usr/include/libpq-fe.h /usr/include/postgres_ext.h \
- /usr/include/pg_config_ext.h
+ /usr/include/pg_config_ext.h /usr/include/json/json.h \
+ /usr/include/json/config.h /usr/include/json/allocator.h \
+ /usr/include/json/version.h /usr/include/json/json_features.h \
+ /usr/include/json/forwards.h /usr/include/json/reader.h \
+ /usr/include/json/value.h /usr/include/c++/14/deque \
+ /usr/include/c++/14/bits/stl_deque.h /usr/include/c++/14/bits/deque.tcc \
+ /usr/include/c++/14/stack /usr/include/c++/14/bits/stl_stack.h \
+ /usr/include/json/writer.h

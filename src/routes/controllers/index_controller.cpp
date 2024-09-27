@@ -1,24 +1,26 @@
 #include "index_controller.h"
 #include <libpq-fe.h>
 #include <string>
+#include <json/json.h> 
 
-void handlePapuRoute(const crow::request& req, crow::response& res, DatabaseConnection& dbConn) {
+std::string getDatabaseInfo(const DatabaseConnection& dbConn) {
     PGconn* conn = dbConn.getConnection();
     if (!conn) {
-        res = crow::response(500, "Error de conexión a la base de datos");
-        return;
+        return "{\"error\": \"No connection to database\"}";
     }
 
-    PGresult* result = PQexec(conn, "SELECT 2");
+    PGresult* result = PQexec(conn, "SELECT version()");
     if (PQresultStatus(result) != PGRES_TUPLES_OK) {
-        res = crow::response(500, "Error al ejecutar la consulta");
         PQclear(result);
-        return;
+        return "{\"error\": \"Failed to retrieve database info\"}";
     }
 
-    std::string value = PQgetvalue(result, 0, 0);
+    std::string dbVersion = PQgetvalue(result, 0, 0);
     PQclear(result);
 
-    res = crow::response(value);
-    res.end();
+    Json::Value jsonData;
+    jsonData["database_version"] = dbVersion;
+
+    Json::StreamWriterBuilder writer;
+    return Json::writeString(writer, jsonData);
 }
