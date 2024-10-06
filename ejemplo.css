@@ -1,0 +1,10 @@
+.student {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    background-color: #b4e09b;
+}
+.error {
+    color: red;
+}

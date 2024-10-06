@@ -5,7 +5,7 @@
 
 #include "../db_utilities.h"
 
-void setupIndexRoutes(crow::App<JSONMiddleware>& app, DatabaseConnection& dbConn) {
+void setupIndexRoutes(crow::App<JSONMiddleware,CORS>& app, DatabaseConnection& dbConn) {
     
     CROW_ROUTE(app, "/dbinfo")
     ([&dbConn](const crow::request& req, crow::response& res) {

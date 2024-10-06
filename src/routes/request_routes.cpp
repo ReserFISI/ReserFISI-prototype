@@ -1,7 +1,7 @@
 #include "request_routes.h"
 #include "controllers/request_controller.h"
 
-void setupRequestRoutes(crow::App<JSONMiddleware>& app) {
+void setupRequestRoutes(crow::App<JSONMiddleware,CORS>& app) {
     CROW_ROUTE(app, "/request")
     .methods(crow::HTTPMethod::GET)
     ([](const crow::request& req, crow::response& res) {

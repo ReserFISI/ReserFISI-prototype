@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="ejemplo.css">
+    <title>Lista de Estudiantes</title>
+</head>
+<body>
+    <h1>Lista de Estudiantes</h1>
+    <div id="students-list"></div>
+    <p id="error-message" class="error"></p>
+
+    <script>
+        async function loadStudents() {
+            try {
+                const response = await fetch("http://localhost:18080/students");
+                if (!response.ok) {
+                    throw new Error("Error al obtener la lista de estudiantes");
+                }
+
+                const students = await response.json();
+                const studentsList = document.getElementById("students-list");
+                studentsList.innerHTML = "";
+                const errorMessage = document.getElementById("error-message");
+                errorMessage.textContent = "";  // Limpiar mensaje de error
+
+                // muestra los estudiantes
+                students.forEach(student => {
+                    const studentDiv = document.createElement("div");
+                    studentDiv.className = "student";
+                    studentDiv.innerHTML = `
+                        <h2>Estudiante ID: ${student.ID_Estudiante}</h2>
+                        <p><strong>Nombre:</strong> ${student.Nombre}</p>
+                        <p><strong>Correo:</strong> ${student.Correo_Electronico}</p>
+                        <p><strong>Teléfono:</strong> ${student.Telefono}</p>
+                    `;
+                    studentsList.appendChild(studentDiv);
+                });
+            } catch (error) {
+                document.getElementById("error-message").textContent = "Error al cargar students: " + error.message;
+            }
+        }
+
+        loadStudents();
+    </script>
+</body>
+</html>

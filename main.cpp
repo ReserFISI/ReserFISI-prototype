@@ -3,7 +3,10 @@
 #include "src/routes/index_routes.h"
 
 #include "src/db.h"
+
+#include "src/cors_middleware.h"
 #include "src/json_middleware.h"
+
 #include "dotenv.h"
 
 int main() {
@@ -11,12 +14,12 @@ int main() {
     dotenv::init("../.env");
     initDatabaseConnection();
 
-    crow::App<JSONMiddleware> app; 
+    crow::App<JSONMiddleware,CORS> app; 
     
     setupRequestRoutes(app);
     setupStudentRoutes(app);
-
     setupIndexRoutes(app, *db);
+
 
     app.port(18080).multithreaded().run();
 
