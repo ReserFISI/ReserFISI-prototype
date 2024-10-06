@@ -3,6 +3,7 @@
 #include "src/routes/index_routes.h"
 
 #include "src/db.h"
+#include "db/db_setup.h"
 
 #include "src/cors_middleware.h"
 #include "src/json_middleware.h"
@@ -20,7 +21,8 @@ int main() {
     setupStudentRoutes(app);
     setupIndexRoutes(app, *db);
 
-
+    //setupDatabase(*db);
+    
     app.port(18080).multithreaded().run();
 
     cleanupDatabaseConnection();

@@ -4,6 +4,7 @@
 #include <libpq-fe.h>
 #include <stdexcept>
 #include <string>
+#include <memory>
 
 class DatabaseConnection {
 public:
@@ -19,7 +20,7 @@ private:
     PGconn* conn;
 };
 
-extern DatabaseConnection* db;
+extern std::unique_ptr<DatabaseConnection> db;
 
 void initDatabaseConnection(); 
 void cleanupDatabaseConnection();

@@ -2,7 +2,7 @@
 #include <iostream>
 #include <dotenv.h>
 
-DatabaseConnection* db = nullptr; 
+std::unique_ptr<DatabaseConnection> db = nullptr;
 
 DatabaseConnection::DatabaseConnection(const std::string& connectionString) : conn(nullptr) {
     connect(connectionString);
@@ -49,10 +49,11 @@ void initDatabaseConnection() {
     std::string dbPassword = std::getenv("DB_PASSWORD");
     std::string conninfo = "dbname=" + dbName + " user=" + dbUser + " password=" + dbPassword;
     std::cout << "Connection info: " << conninfo << std::endl; //Para test
-    db = new DatabaseConnection(conninfo); //La fijaza era hacerlo un objeto
+    db = std::make_unique<DatabaseConnection>(conninfo); // cambiado para el uso de smart pointers
 }
 
 void cleanupDatabaseConnection() {
-    delete db;
-    db = nullptr;
+    if (db) {
+        db.reset(); // Esto limpiará la conexión de manera segura
+    }
 }

@@ -7,6 +7,9 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 # Ejecutables
 add_executable(ReserFISI 
     main.cpp 
+
+    #db/db_setup.cpp
+
     src/db.cpp 
     src/db_operations.cpp
     src/db_utilities.cpp

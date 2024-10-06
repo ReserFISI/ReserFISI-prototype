@@ -1,6 +1,9 @@
-CREATE DATABASE IF NOT EXISTS ReserFISI;
-
-USE ReserFISI;
+DO $$
+BEGIN
+    IF NOT EXISTS (SELECT FROM pg_database WHERE datname = 'Papulince') THEN
+        EXECUTE 'CREATE DATABASE Papulince';
+    END IF;
+END $$;
 
 CREATE TABLE Alumnos (
     ID_Estudiante INT PRIMARY KEY,
