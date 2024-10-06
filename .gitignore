@@ -2,3 +2,4 @@ txts/
 .vscode/
 .env
 build/
+build
