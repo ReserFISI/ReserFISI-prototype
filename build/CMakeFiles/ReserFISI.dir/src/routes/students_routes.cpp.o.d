@@ -749,4 +749,5 @@ CMakeFiles/ReserFISI.dir/src/routes/students_routes.cpp.o: \
  /usr/local/include/crow/http_server.h /usr/local/include/crow/version.h \
  /usr/local/include/crow/app.h /usr/include/c++/14/thread \
  /usr/include/c++/14/bits/this_thread_sleep.h \
+ /home/sebastianrojas/Escritorio/ReserFISI-prototype/src/routes/../cors_middleware.h \
  /home/sebastianrojas/Escritorio/ReserFISI-prototype/src/routes/controllers/students_controller.h

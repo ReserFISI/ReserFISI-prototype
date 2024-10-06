@@ -749,11 +749,13 @@ CMakeFiles/ReserFISI.dir/main.cpp.o: \
  /usr/local/include/crow/http_server.h /usr/local/include/crow/version.h \
  /usr/local/include/crow/app.h /usr/include/c++/14/thread \
  /usr/include/c++/14/bits/this_thread_sleep.h \
+ /home/sebastianrojas/Escritorio/ReserFISI-prototype/src/routes/../cors_middleware.h \
  /home/sebastianrojas/Escritorio/ReserFISI-prototype/src/routes/students_routes.h \
  /home/sebastianrojas/Escritorio/ReserFISI-prototype/src/routes/index_routes.h \
  /home/sebastianrojas/Escritorio/ReserFISI-prototype/src/routes/../db.h \
  /usr/include/libpq-fe.h /usr/include/postgres_ext.h \
  /usr/include/pg_config_ext.h \
  /home/sebastianrojas/Escritorio/ReserFISI-prototype/src/db.h \
+ /home/sebastianrojas/Escritorio/ReserFISI-prototype/src/cors_middleware.h \
  /home/sebastianrojas/Escritorio/ReserFISI-prototype/src/json_middleware.h \
  /usr/local/include/laserpants/dotenv-0.9.3/dotenv.h

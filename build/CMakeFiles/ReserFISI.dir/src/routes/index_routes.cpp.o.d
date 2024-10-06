@@ -761,5 +761,6 @@ CMakeFiles/ReserFISI.dir/src/routes/index_routes.cpp.o: \
  /usr/include/c++/14/bits/stl_stack.h /usr/include/json/writer.h \
  /home/sebastianrojas/Escritorio/ReserFISI-prototype/src/routes/index_routes.h \
  /home/sebastianrojas/Escritorio/ReserFISI-prototype/src/routes/../db.h \
+ /home/sebastianrojas/Escritorio/ReserFISI-prototype/src/routes/../cors_middleware.h \
  /home/sebastianrojas/Escritorio/ReserFISI-prototype/src/routes/../db_utilities.h \
  /home/sebastianrojas/Escritorio/ReserFISI-prototype/src/routes/../db.h
