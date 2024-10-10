@@ -21,7 +21,7 @@ void DatabaseOperations::insertStudent(int id, const std::string& nombre, const 
 }
 
 std::string DatabaseOperations::getAllStudents(){
-    if (!conn) {
+    if(!conn){
         throw std::runtime_error("Database connection is not established.");}
 
     std::string query = "SELECT * FROM Alumnos;";
@@ -116,8 +116,7 @@ std::string DatabaseOperations::getAllRequests() {
     json_response << "]";
 
     PQclear(result);
-    return json_response.str();
-}
+    return json_response.str();}
 
 std::string DatabaseOperations::getRequestById(int id) {
     if(!conn){

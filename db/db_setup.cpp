@@ -1,9 +1,11 @@
-/*
 #include "db_setup.h"
+
 #include <iostream>
 #include <fstream>
 #include <string>
+
 #include <libpq-fe.h>
+#include <dotenv.h>
 
 void setupDatabase(DatabaseConnection& dbConn) {
     PGconn* conn = dbConn.getConnection();
@@ -12,13 +14,12 @@ void setupDatabase(DatabaseConnection& dbConn) {
         return;
     }
 
-    const char* dbName = "Papulince";
-    PGresult* res = PQexec(conn, "SELECT 1 FROM pg_database WHERE datname = 'Papulince'");
-    
-    if (PQresultStatus(res) == PGRES_TUPLES_OK) {
-        std::cout << "Database already exists!" << std::endl;
+    const char* dbName = "reserfisi"; 
+    PGresult* res = PQexec(conn, ("SELECT 1 FROM pg_database WHERE datname = '" + std::string(dbName) + "'").c_str());
+
+    if (PQresultStatus(res) == PGRES_TUPLES_OK && PQntuples(res) > 0) {
+        std::cout << "Database '" << dbName << "' already exists!" << std::endl;
     } else {
-        // Crear la base de datos
         PQclear(res);
         std::string createDbQuery = "CREATE DATABASE " + std::string(dbName);
         res = PQexec(conn, createDbQuery.c_str());
@@ -26,37 +27,45 @@ void setupDatabase(DatabaseConnection& dbConn) {
             std::cerr << "Error creating database: " << PQerrorMessage(conn) << std::endl;
             PQclear(res);
             return;
-        } else {
-            std::cout << "Database created successfully!" << std::endl;
         }
+        std::cout << "Database created successfully!" << std::endl;
     }
-    
-    PQclear(res);
 
-    PQfinish(conn);
-    conn = PQconnectdb("dbname=Papulince user=sebastianrojas password=1234");
+    PQclear(res); 
+
+    const char* dbUser = std::getenv("DB_USER");
+    const char* dbPassword = std::getenv("DB_PASSWORD");
     
-    if (PQstatus(conn) != CONNECTION_OK) {
-        std::cerr << "Connection to database failed: " << PQerrorMessage(conn) << std::endl;
+    if (!dbUser || !dbPassword) {
+        std::cerr << "Usuario o contrasenia incorrecta" << std::endl;
+        return;
+    }
+
+    std::string conninfo = "dbname=" + std::string(dbName) + " user=" + std::string(dbUser) + " password=" + std::string(dbPassword);
+    
+    PGconn* newConn = PQconnectdb(conninfo.c_str());
+    if (PQstatus(newConn) != CONNECTION_OK) {
+        std::cerr << "Connection to database failed: " << PQerrorMessage(newConn) << std::endl;
+        PQfinish(newConn);
         return;
     }
 
     std::ifstream sqlFile("../db/database.sql");
     if (!sqlFile.is_open()) {
-        std::cerr << "Could not open SQL file!" << std::endl;
+        std::cerr << "No se abrio el sql!" << std::endl;
+        PQfinish(newConn);
         return;
     }
 
     std::string sql((std::istreambuf_iterator<char>(sqlFile)), std::istreambuf_iterator<char>());
-    res = PQexec(conn, sql.c_str());
+    res = PQexec(newConn, sql.c_str());
 
     if (PQresultStatus(res) != PGRES_COMMAND_OK) {
-        std::cerr << "Error executing SQL script: " << PQerrorMessage(conn) << std::endl;
+        std::cerr << "Error executing SQL script: " << PQerrorMessage(newConn) << std::endl;
     } else {
         std::cout << "Database setup completed successfully!" << std::endl;
     }
 
     PQclear(res);
-    PQfinish(conn);
+    PQfinish(newConn);
 }
-*/

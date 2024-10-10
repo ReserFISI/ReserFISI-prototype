@@ -2,25 +2,24 @@
 #include <iostream>
 #include <dotenv.h>
 
+#include "../db/db_setup.h"
+
+#include <thread>
+#include <chrono>
+
 std::unique_ptr<DatabaseConnection> db = nullptr;
 
 DatabaseConnection::DatabaseConnection(const std::string& connectionString) : conn(nullptr) {
     connect(connectionString);
 }
 
-DatabaseConnection::~DatabaseConnection() {
-    disconnect();
-}
+DatabaseConnection::~DatabaseConnection() {}
 
 PGconn* DatabaseConnection::getConnection() const {
     return conn;
 }
 
 void DatabaseConnection::connect(const std::string& connectionString) {
-    if (conn) {
-        std::cerr << "Already connected to the database!" << std::endl;
-        return;
-    }
     
     conn = PQconnectdb(connectionString.c_str());
 
@@ -31,7 +30,7 @@ void DatabaseConnection::connect(const std::string& connectionString) {
         throw std::runtime_error("Failed to connect to database");
     }
 
-    std::cout << "Connected to the database successfully!" << std::endl;
+    std::cout << "Conexion establecida!" << std::endl;
 }
 
 void DatabaseConnection::disconnect() {
@@ -42,18 +41,46 @@ void DatabaseConnection::disconnect() {
     }
 }
 
-
 void initDatabaseConnection() {
-    std::string dbName = std::getenv("DB_NAME");
-    std::string dbUser = std::getenv("DB_USER");
-    std::string dbPassword = std::getenv("DB_PASSWORD");
-    std::string conninfo = "dbname=" + dbName + " user=" + dbUser + " password=" + dbPassword;
-    std::cout << "Connection info: " << conninfo << std::endl; //Para test
-    db = std::make_unique<DatabaseConnection>(conninfo); // cambiado para el uso de smart pointers
+    const char* dbNameEnv = std::getenv("DB_NAME");
+    const char* dbUserEnv = std::getenv("DB_USER");
+    const char* dbPasswordEnv = std::getenv("DB_PASSWORD");
+
+    if (!dbNameEnv || !dbUserEnv || !dbPasswordEnv) {
+        std::cerr << "Una de las variables no esta bien colocada" << std::endl;
+        return;
+    }
+
+    std::string initialConninfo = "user=" + std::string(dbUserEnv) + " password=" + std::string(dbPasswordEnv) + " dbname=postgres";
+    DatabaseConnection initialDbConn(initialConninfo);
+    
+    PGconn* conn = initialDbConn.getConnection();
+    PGresult* res = PQexec(conn, "SELECT 1 FROM pg_database WHERE datname = 'reserfisi'");
+    
+    if (PQresultStatus(res) == PGRES_TUPLES_OK && PQntuples(res) > 0) {
+        std::cout << "Database 'reserfisi' already exists!" << std::endl;
+        } 
+    else {
+        setupDatabase(initialDbConn); 
+    }
+
+    PQclear(res);
+    PQfinish(conn);  
+
+
+    std::string conninfo = "dbname=reserfisi user=" + std::string(dbUserEnv) + " password=" + std::string(dbPasswordEnv);
+    std::cout << "Connecting to database: " << conninfo << std::endl;
+
+    db = std::make_unique<DatabaseConnection>(conninfo);
+
+    if (!db->getConnection()) {
+        throw std::runtime_error("Failed to connect to database");
+    }
 }
 
 void cleanupDatabaseConnection() {
     if (db) {
-        db.reset(); // Esto limpiará la conexión de manera segura
+        db->disconnect();
+        db.reset(); 
     }
 }

@@ -13,6 +13,7 @@
 int main() {
     
     dotenv::init("../.env");
+    
     initDatabaseConnection();
 
     crow::App<JSONMiddleware,CORS> app; 
@@ -20,8 +21,6 @@ int main() {
     setupRequestRoutes(app);
     setupStudentRoutes(app);
     setupIndexRoutes(app, *db);
-
-    //setupDatabase(*db);
     
     app.port(18080).multithreaded().run();
 

@@ -4,6 +4,6 @@
 #include "crow.h"
 #include "../../db.h"
 
-void handlePapuRoute(const crow::request& req, crow::response& res, DatabaseConnection& dbConn);
+std::string getDatabaseInfo(const DatabaseConnection& dbConn);
 
 #endif
