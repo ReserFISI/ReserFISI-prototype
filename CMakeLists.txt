@@ -7,8 +7,9 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 # Ejecutables
 add_executable(ReserFISI 
     main.cpp 
-
+    
     db/db_setup.cpp
+    email_service/email.cpp
 
     src/db.cpp 
     src/db_operations.cpp
@@ -19,26 +20,22 @@ add_executable(ReserFISI
     src/routes/controllers/students_controller.cpp
     src/routes/controllers/request_controller.cpp
     src/routes/controllers/index_controller.cpp
+
 )
-
-#jsoncpp
 find_package(PkgConfig REQUIRED)
+
 pkg_check_modules(JSONCPP jsoncpp)
-
-#dotenv 
-find_package(laserpants_dotenv REQUIRED)
-
-# Encontrar y configurar libpq
 pkg_check_modules(LIBPQ libpq)
+
+#find_packages
+find_package(laserpants_dotenv REQUIRED) #dotenv
+find_package(CURL REQUIRED) #libcurl
+
+#Directorios
+include_directories(${CURL_INCLUDE_DIRS})
 include_directories(${LIBPQ_INCLUDE_DIRS})
 
-# Enlaces
-target_link_libraries(ReserFISI PRIVATE ${LIBPQ_LIBRARIES} laserpants::dotenv ${JSONCPP_LIBRARIES})
+#Enlaces
+target_link_libraries(ReserFISI PRIVATE ${LIBPQ_LIBRARIES} laserpants::dotenv ${JSONCPP_LIBRARIES} ${CURL_LIBRARIES})
+target_include_directories(ReserFISI PRIVATE include ${JSONCPP_INCLUDE_DIRS})
 
-# Crow
-target_include_directories(ReserFISI PRIVATE include)
-target_include_directories(ReserFISI PRIVATE ${JSONCPP_INCLUDE_DIRS})
-
-# Para los jsons (Se borrará si es que no se necesita xd)
-#configure_file(${CMAKE_SOURCE_DIR}/db/data.json ${CMAKE_BINARY_DIR}/db/data.json COPYONLY)
-#configure_file(${CMAKE_SOURCE_DIR}/hola.json ${CMAKE_BINARY_DIR}/hola.json COPYONLY)

@@ -8,6 +8,8 @@
 #include "src/cors_middleware.h"
 #include "src/json_middleware.h"
 
+#include "email_service/email.h"
+
 #include "dotenv.h"
 
 int main() {
@@ -21,6 +23,8 @@ int main() {
     setupRequestRoutes(app);
     setupStudentRoutes(app);
     setupIndexRoutes(app, *db);
+
+    //sendEmail("test@gmail.com", "test", 1234);
     
     app.port(18080).multithreaded().run();
 
