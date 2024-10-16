@@ -1,6 +1,6 @@
 #include "students_controller.h"
-#include "../../db.h"
-#include "../../db_operations.h"
+#include "../../services/db_services/db.h"
+#include "../../services/db_services/db_operations.h"
 
 void getStudents(crow::response& res) {
     try {

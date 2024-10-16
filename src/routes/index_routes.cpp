@@ -1,9 +1,8 @@
 #include "controllers/index_controller.h"
-#include "../json_middleware.h"
 #include <json/json.h> 
 #include "index_routes.h"
 
-#include "../db_utilities.h"
+#include "../services/db_services/db_utilities.h"
 
 void setupIndexRoutes(crow::App<JSONMiddleware,CORS>& app, DatabaseConnection& dbConn) {
     

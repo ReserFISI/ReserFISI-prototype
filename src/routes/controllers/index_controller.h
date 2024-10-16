@@ -2,7 +2,7 @@
 #define INDEX_CONTROLLER_H
 
 #include "crow.h"
-#include "../../db.h"
+#include "../../services/db_services/db.h"
 
 std::string getDatabaseInfo(const DatabaseConnection& dbConn);
 

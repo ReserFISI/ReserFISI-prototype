@@ -9,11 +9,12 @@ add_executable(ReserFISI
     main.cpp 
     
     db/db_setup.cpp
-    email_service/email.cpp
-
-    src/db.cpp 
-    src/db_operations.cpp
-    src/db_utilities.cpp
+    
+    src/services/email_services/email.cpp
+    src/services/db_services/db.cpp 
+    src/services/db_services/db_operations.cpp
+    src/services/db_services/db_utilities.cpp
+    
     src/routes/students_routes.cpp
     src/routes/request_routes.cpp 
     src/routes/index_routes.cpp

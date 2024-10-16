@@ -1,14 +1,10 @@
-#include "src/routes/request_routes.h"
-#include "src/routes/students_routes.h"
-#include "src/routes/index_routes.h"
+#include "src/routes/routes.h"
 
-#include "src/db.h"
-#include "db/db_setup.h"
+#include "src/middlewares/middlewares.h"
 
-#include "src/cors_middleware.h"
-#include "src/json_middleware.h"
+#include "src/services/db_services/db.h"
 
-#include "email_service/email.h"
+#include "src/services/email_services/email.h"
 
 #include "dotenv.h"
 
