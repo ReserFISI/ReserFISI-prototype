@@ -15,7 +15,7 @@ Para que se pueda buildear correctamente el proyecto
 ### Librerías
 
 - [Jsoncpp](https://github.com/open-source-parsers/jsoncpp)
-- [Libpq] (https://www.postgresql.org/download/) 
+- [Libpq](https://www.postgresql.org/download/) 
 - [Crow](https://crowcpp.org/master/)
 - [Dotenvcpp](https://github.com/laserpants/dotenv-cpp)
 - [Libcurl](https://curl.se/download.html)
