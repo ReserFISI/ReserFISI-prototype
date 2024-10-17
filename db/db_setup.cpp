@@ -1,10 +1,7 @@
 #include "db_setup.h"
-
+#include "../src/utils/config.h"
 #include <iostream>
 #include <fstream>
-#include <string>
-
-#include <libpq-fe.h>
 #include <dotenv.h>
 
 void setupDatabase(DatabaseConnection& dbConn) {
@@ -28,44 +25,40 @@ void setupDatabase(DatabaseConnection& dbConn) {
             PQclear(res);
             return;
         }
-        std::cout << "Database created successfully!" << std::endl;
-    }
+        std::cout << "Database created successfully!" << std::endl;}
 
     PQclear(res); 
 
-    const char* dbUser = std::getenv("DB_USER");
-    const char* dbPassword = std::getenv("DB_PASSWORD");
-    
-    if (!dbUser || !dbPassword) {
-        std::cerr << "Usuario o contrasenia incorrecta" << std::endl;
-        return;
-    }
+    std::string dbUser = Config::getDbUser();
+    std::string dbPassword = Config::getDbPassword();
 
-    std::string conninfo = "dbname=" + std::string(dbName) + " user=" + std::string(dbUser) + " password=" + std::string(dbPassword);
+    if(dbUser.empty() || dbPassword.empty()) {
+        std::cerr << "Usuario o contrasenia incorrecta" << std::endl;
+        return;}
+
+    std::string conninfo = "dbname=" + std::string(dbName) + " user=" + dbUser + " password=" + dbPassword;
     
     PGconn* newConn = PQconnectdb(conninfo.c_str());
-    if (PQstatus(newConn) != CONNECTION_OK) {
+    if(PQstatus(newConn) != CONNECTION_OK) {
         std::cerr << "Connection to database failed: " << PQerrorMessage(newConn) << std::endl;
         PQfinish(newConn);
-        return;
-    }
+        return;}
 
     std::ifstream sqlFile("../db/database.sql");
-    if (!sqlFile.is_open()) {
+    if(!sqlFile.is_open()){
         std::cerr << "No se abrio el sql!" << std::endl;
         PQfinish(newConn);
-        return;
-    }
+        return;}
 
     std::string sql((std::istreambuf_iterator<char>(sqlFile)), std::istreambuf_iterator<char>());
     res = PQexec(newConn, sql.c_str());
 
-    if (PQresultStatus(res) != PGRES_COMMAND_OK) {
-        std::cerr << "Error executing SQL script: " << PQerrorMessage(newConn) << std::endl;
-    } else {
-        std::cout << "Database setup completed successfully!" << std::endl;
-    }
+    if(PQresultStatus(res) != PGRES_COMMAND_OK){
+        std::cerr << "Error executing SQL script: " << PQerrorMessage(newConn) << std::endl;}
+    else{
+        std::cout << "Database setup completed successfully!" << std::endl;}
 
     PQclear(res);
     PQfinish(newConn);
 }
+

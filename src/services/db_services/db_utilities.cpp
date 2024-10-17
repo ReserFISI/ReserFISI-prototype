@@ -1,8 +1,5 @@
-#include <libpq-fe.h>
-#include <string>
 #include <json/json.h>
 #include "db_utilities.h"
-#include "db.h"
 
 std::string getDatabaseInfo(DatabaseConnection& dbConn) {
     PGconn* conn = dbConn.getConnection();

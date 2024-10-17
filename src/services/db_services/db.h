@@ -2,7 +2,6 @@
 #define DB_H
 
 #include <libpq-fe.h>
-#include <stdexcept>
 #include <string>
 #include <memory>
 

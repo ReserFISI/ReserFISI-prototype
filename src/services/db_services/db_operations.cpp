@@ -1,6 +1,6 @@
 #include "db_operations.h"
 #include <sstream>
-#include <string>
+#include <stdexcept>
 
 DatabaseOperations::DatabaseOperations(PGconn* connection) : conn(connection) {}
 
