@@ -12,11 +12,11 @@ public:
     std::string getAllStudents();
     std::string getStudentById(int id);
 
-    void insertRequest(int id, const std::string& fechaSolicitud, const std::string& fechaReserva, const std::string& estadoReserva);
+    void insertRequest(int idAlumno, int idEspacio, int idUnidad, const std::string& fechaSolicitud, const std::string& fechaReserva, const std::string& estadoReserva);
     std::string getAllRequests();
     std::string getRequestById(int id);
     bool removeRequestById(int id);
-    void updateRequestById(int id, const std::string& fechaSolicitud, const std::string& fechaReserva, const std::string& estadoReserva);
+    void updateRequestById(int id, int idEspacio, int idUnidad, const std::string& fechaSolicitud, const std::string& fechaReserva, const std::string& estadoReserva);
 
 private:
     PGconn* conn;
