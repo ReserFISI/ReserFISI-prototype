@@ -1,8 +1,8 @@
 #include "db.h"
 #include <iostream>
 #include <dotenv.h>
-#include "../../../db/db_setup.h"
 #include "../../utils/config.h"
+#include "../../../db/db_setup.h"
 
 std::unique_ptr<DatabaseConnection> db = nullptr;
 
@@ -30,37 +30,27 @@ void DatabaseConnection::connect(const std::string& connectionString) {
 }
 
 void DatabaseConnection::disconnect() {
-    if(conn){
+    if (conn) {
         PQfinish(conn);
         conn = nullptr;
-        std::cout << "Disconnected from the database successfully!" << std::endl;}
+        std::cout << "Disconnected from the database successfully!" << std::endl;
+    }
 }
 
 void initDatabaseConnection() {
-    std::string dbConnectionString = Config::getDbConnectionString();
-
-    DatabaseConnection initialDbConn(dbConnectionString);
-
-    PGconn* conn = initialDbConn.getConnection();
-    PGresult* res = PQexec(conn, "SELECT 1 FROM pg_database WHERE datname = 'reserfisi'");
-
-    if (PQresultStatus(res) == PGRES_TUPLES_OK && PQntuples(res) > 0) {
-        std::cout << "Database 'reserfisi' ya existe!" << std::endl;
-    } else {
-        setupDatabase(initialDbConn);}
-
-    PQclear(res);
-    PQfinish(conn);
-
-    std::string conninfo = "dbname=reserfisi " + dbConnectionString;  
-    std::cout << "Connecting to database: " << conninfo << std::endl;
-
+    std::string conninfo = Config::getDbConnectionString();
+    
     db = std::make_unique<DatabaseConnection>(conninfo);
+    PGconn* conn = db->getConnection();
 
-    if (!db->getConnection()) {
+    if (PQstatus(conn) != CONNECTION_OK) {
+        std::cerr << "Connection to database failed: " << PQerrorMessage(conn) << std::endl;
         throw std::runtime_error("Failed to connect to database");
     }
+
+    std::cout << "Successfully connected to the database." << std::endl;
 }
+
 
 void cleanupDatabaseConnection() {
     if (db) {

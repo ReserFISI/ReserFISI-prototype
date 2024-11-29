@@ -3,6 +3,6 @@
 
 #include "../src/services/db_services/db.h"
 
-void setupDatabase(DatabaseConnection& dbConn);
+void setupDatabase();
 
 #endif 

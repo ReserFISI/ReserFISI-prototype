@@ -1,3 +1,5 @@
+#include "db/db_setup.h"
+
 #include "src/routes/routes.h"
 #include "src/middlewares/middlewares.h"
 #include "src/services/db_services/db.h"
@@ -12,6 +14,7 @@ int main() {
     crow::App<JSONMiddleware,CORS> app; 
     int PORT = Config::getPort(); 
 
+    setupDatabase(); 
     initDatabaseConnection();
     
     setupRequestRoutes(app);
