@@ -1,6 +1,0 @@
-txts/
-.vscode/
-.env
-build/
-build
-email_service/node_modules

@@ -1,5 +1,4 @@
 #include "db/db_setup.h"
-
 #include "src/routes/routes.h"
 #include "src/middlewares/middlewares.h"
 #include "src/services/db_services/db.h"
