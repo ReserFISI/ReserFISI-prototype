@@ -1,6 +1,5 @@
 DO $$ 
 BEGIN
-    -- Crear tabla alumnos si no existe
     IF NOT EXISTS (SELECT 1 FROM pg_tables WHERE schemaname = 'public' AND tablename = 'alumnos') THEN
         CREATE TABLE "alumnos" (
             "ID_Alumno" SERIAL PRIMARY KEY,
@@ -10,7 +9,6 @@ BEGIN
         );
     END IF;
 
-    -- Crear tabla estudiante si no existe
     IF NOT EXISTS (SELECT 1 FROM pg_tables WHERE schemaname = 'public' AND tablename = 'estudiante') THEN
         CREATE TABLE "estudiante" (
             "ID_Estudiante" SERIAL PRIMARY KEY,
@@ -19,7 +17,6 @@ BEGIN
         );
     END IF;
 
-    -- Crear tabla tercio si no existe
     IF NOT EXISTS (SELECT 1 FROM pg_tables WHERE schemaname = 'public' AND tablename = 'tercio') THEN
         CREATE TABLE "tercio" (
             "ID_Tercio" SERIAL PRIMARY KEY,
@@ -29,7 +26,6 @@ BEGIN
         );
     END IF;
 
-    -- Crear tabla espacio si no existe
     IF NOT EXISTS (SELECT 1 FROM pg_tables WHERE schemaname = 'public' AND tablename = 'espacio') THEN
         CREATE TABLE "espacio" (
             "ID_Espacio" SERIAL PRIMARY KEY,
@@ -39,7 +35,6 @@ BEGIN
         );
     END IF;
 
-    -- Crear tabla unidad si no existe
     IF NOT EXISTS (SELECT 1 FROM pg_tables WHERE schemaname = 'public' AND tablename = 'unidad') THEN
         CREATE TABLE "unidad" (
             "ID_Unidad" SERIAL PRIMARY KEY,
@@ -47,7 +42,6 @@ BEGIN
         );
     END IF;
 
-    -- Crear tabla reserva si no existe
     IF NOT EXISTS (SELECT 1 FROM pg_tables WHERE schemaname = 'public' AND tablename = 'reserva') THEN
         CREATE TABLE "reserva" (
             "ID_Reserva" SERIAL PRIMARY KEY,
@@ -66,7 +60,6 @@ BEGIN
 END $$;
 
 /*
-
 -- Insertar datos en la tabla alumnos (si no existen)
 INSERT INTO "alumnos" ("Nombre", "Correo_Electronico", "Telefono") VALUES
 ('Juan Perez', 'juan.perez@email.com', '987654321'),
@@ -80,7 +73,6 @@ INSERT INTO "estudiante" ("ID_Alumno") VALUES
 (1), (2), (3), (4), (5);
 
 -- Insertar datos en la tabla tercio
-
 INSERT INTO "tercio" ("ID_Alumno", "Nombre_Tercio") VALUES
 (1, 'Tercio Superior'),
 (2, 'Tercio Medio'),
